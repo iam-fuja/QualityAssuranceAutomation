@@ -40,7 +40,7 @@
         @Test
         public void Login() throws InterruptedException {
 
-            //Calling login credentials from config file
+            //Calling login credentials from configuration file
             String username = prop.getProperty("user_username");
             String password = prop.getProperty("user_password");
 
