@@ -1,0 +1,79 @@
+name: MSDAT Daily Automated Test (10 AM)  
+
+on:  
+  schedule:  
+    - cron: '0 10 * * *'  # Runs at 10:00 AM UTC daily  
+  workflow_dispatch:       # Allows manual triggering  
+
+jobs:  
+  test:  
+    runs-on: ubuntu-latest  
+    timeout-minutes: 50  
+
+    steps:  
+      # 1. Checkout code  
+      - name: Checkout  
+        uses: actions/checkout@v4  
+
+      # 2. Set up Java  
+      - name: Set up JDK 17  
+        uses: actions/setup-java@v3  
+        with:  
+          java-version: '17'  
+          distribution: 'temurin'  
+          cache: 'maven'  
+
+      # 3. Cache Maven dependencies  
+      - name: Cache Maven  
+        uses: actions/cache@v3  
+        with:  
+          path: ~/.m2  
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}  
+
+      # 4. Run tests  
+      - name: Run Tests  
+        run: mvn clean test  
+        env:  
+          BROWSER: chrome  
+          HEADLESS: false  
+
+      # 5. Zip reports (TestNG + ExtentReports)  
+      - name: Zip Reports  
+        if: always()  
+        run: |  
+          mkdir -p reports  
+          cp -r target/surefire-reports/* reports/  
+          cp -r target/extent-reports/* reports/  
+          zip -r test-reports.zip reports/  
+
+      # 6. Upload reports as GitHub artifact (temporary storage)  
+      - name: Upload Artifact  
+        uses: actions/upload-artifact@v3  
+        with:  
+          name: test-reports  
+          path: test-reports.zip  
+
+      # 7. Send email with reports  
+      - name: Send Email  
+        if: always()  
+        uses: dawidd6/action-send-mail@v3  
+        with:  
+          server_address: smtp.gmail.com  
+          server_port: 465  
+          username: ${{ secrets.EMAIL_USERNAME }}  
+          password: ${{ secrets.EMAIL_PASSWORD }}  
+          subject: "Daily Test Report - ${{ github.workflow }}"  
+          to: oyenike.sola@gmail.com  
+          from: ${{ secrets.EMAIL_USERNAME }}  
+          body: "Today's Test execution completed. Reports attached."  
+          attachments: test-reports.zip  
+          secure: true  
+
+      # 8. Upload to Google Drive  
+      - name: Upload to Google Drive  
+        if: always()  
+        uses: satackey/action-google-drive@v1.1.1  
+        with:  
+          file: test-reports.zip  
+          folder-id: ${{ secrets.GDRIVE_FOLDER_ID }}  
+          credentials: ${{ secrets.GDRIVE_CREDENTIALS }}  
