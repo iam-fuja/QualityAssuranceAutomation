@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Initial commit ...take all necessary files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UserLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserLogin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +134,7 @@
       <workItem from="1749089991020" duration="214000" />
       <workItem from="1749333576423" duration="609000" />
       <workItem from="1749335162334" duration="40391000" />
-      <workItem from="1749515764194" duration="4175000" />
+      <workItem from="1749515764194" duration="5330000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>
