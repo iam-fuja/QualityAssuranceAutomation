@@ -8,7 +8,7 @@ on:
 jobs:  
   test:  
     runs-on: ubuntu-latest  
-    timeout-minutes: 50  
+    timeout-minutes: 600  
 
     steps:  
       # 1. Checkout code  
@@ -62,10 +62,10 @@ jobs:
           server_port: 465  
           username: ${{ secrets.EMAIL_USERNAME }}  
           password: ${{ secrets.EMAIL_PASSWORD }}  
-          subject: "Daily Test Report - ${{ github.workflow }}"  
+          subject: "MSDAT Daily Test Report - ${{ github.workflow }}"  
           to: oyenike.sola@gmail.com  
           from: ${{ secrets.EMAIL_USERNAME }}  
-          body: "Today's Test execution completed. Reports attached."  
+          body: "Today's MSDAT Test execution completed. Reports attached."  
           attachments: test-reports.zip  
           secure: true  
 
