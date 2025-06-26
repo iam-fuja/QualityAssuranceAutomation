@@ -65,7 +65,7 @@ jobs:
           subject: "MSDAT Daily Test Report - ${{ github.workflow }}"  
           to: Taiwooladosu1@gmail.com  
           from: ${{ secrets.EMAIL_USERNAME }}  
-          body: "Today's MSDAT Test execution completed. Reports attached."  
+          body: "Today's MSDAT Test execution completed."  
           attachments: test-reports.zip  
           secure: true  
 
