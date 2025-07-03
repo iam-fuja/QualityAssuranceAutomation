@@ -1,6 +1,4 @@
     import org.openqa.selenium.*;
-    import org.openqa.selenium.chrome.ChromeDriver;
-    import org.openqa.selenium.chrome.ChromeOptions;
     import org.openqa.selenium.interactions.Actions;
     import org.openqa.selenium.support.ui.ExpectedConditions;
     import org.openqa.selenium.support.ui.WebDriverWait;
@@ -8,19 +6,17 @@
     import org.testng.annotations.BeforeClass;
     import org.testng.annotations.Test;
     import pageObject.LoginPage;
-    import pageObject.MSDATHealthOutcomesServiceCoverageDashboard;
+    import pageObject.MSDATHealthOutcomesSC;
     import resources.Base;
 
     import java.io.IOException;
     import java.time.Duration;
-    import java.util.HashMap;
-    import java.util.Map;
 
     public class UserLogin extends Base {
         public WebDriver driver;
         public LoginPage loginPage;
         public Actions action;
-        public MSDATHealthOutcomesServiceCoverageDashboard msdatHealthOutcomesServiceCoverageDashboard;
+        public MSDATHealthOutcomesSC msdatHealthOutcomesSC;
 
 
         @BeforeClass
@@ -31,22 +27,16 @@
             driver.manage().window().maximize();
 
             loginPage = new LoginPage(driver);
-            msdatHealthOutcomesServiceCoverageDashboard = new MSDATHealthOutcomesServiceCoverageDashboard(driver);
+            msdatHealthOutcomesSC = new MSDATHealthOutcomesSC(driver);
             action = new Actions(driver);
-
         }
 
 
         @Test
         public void Login() throws InterruptedException {
-
             //Calling login credentials from configuration file
             String username = prop.getProperty("user_username");
             String password = prop.getProperty("user_password");
-
-
-
-
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 
@@ -68,7 +58,7 @@
                     System.out.println("Adegunwa");
                 } catch (NoSuchElementException e) {
                     // Method 2: Click outside modal
-                    action.moveByOffset(10, 10).click().perform();
+                    action.moveByOffset(1, 1).click().perform();
                     System.out.println("Imole");
                 }
 
@@ -94,10 +84,10 @@
 
 
 
-            msdatHealthOutcomesServiceCoverageDashboard.chooseDashboard().click();
+            msdatHealthOutcomesSC.chooseDashboard().click();
            // loginPage.getLoginRegisterLink().click();
             System.out.println("Blessings");
-            msdatHealthOutcomesServiceCoverageDashboard.hoscDashboardLink().click();
+            msdatHealthOutcomesSC.hoscDashboardLink().click();
             System.out.println("Hosana");
 
 //            loginPage.getUsername().sendKeys(username);

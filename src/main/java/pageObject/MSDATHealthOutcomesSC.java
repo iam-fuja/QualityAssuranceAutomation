@@ -4,11 +4,11 @@
     import org.openqa.selenium.WebDriver;
     import org.openqa.selenium.WebElement;
 
-    public class MSDATHealthOutcomesServiceCoverageDashboard {
+    public class MSDATHealthOutcomesSC {
 
         public WebDriver driver;
 
-        public MSDATHealthOutcomesServiceCoverageDashboard(WebDriver driver) {
+        public MSDATHealthOutcomesSC(WebDriver driver) {
             this.driver = driver;
         }
 

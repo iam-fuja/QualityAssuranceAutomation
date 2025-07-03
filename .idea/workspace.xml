@@ -5,8 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Initial commit ...take all necessary files">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFacility.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFinancing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pageObject/Modals.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/PageLoadUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFinance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ModalsHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthOutcomesServiceCoverageDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthOutcomesSC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/configuration.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/configuration.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHOSCDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthOSC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/UserLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,11 +67,36 @@
       <recent name="$PROJECT_DIR$/src/main/java/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.UserLogin">
-    <configuration name="MSDATHOSCDashboard" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.MSDATHealthFacilities">
+    <configuration name="MSDATDailyAutomation [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="MSDATHealthFacilities" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="MSDATDailyAutomation" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MSDATHOSCDashboard" />
+      <option name="MAIN_CLASS_NAME" value="MSDATHealthFacilities" />
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
@@ -74,6 +115,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserLogin.Login" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="MSDATDailyAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UserLogin" />
+      <option name="METHOD_NAME" value="Login" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="/Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="MSDATDailyAutomation" />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
@@ -84,33 +137,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="&lt;default&gt; (1)" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="MSDATDailyAutomation" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="PACKAGE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="&lt;default&gt; (2)" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="MSDATDailyAutomation" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="PACKAGE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.UserLogin" />
+        <item itemvalue="TestNG.MSDATHealthFacilities" />
+        <item itemvalue="Maven.MSDATDailyAutomation [clean]" />
         <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml" />
-        <item itemvalue="TestNG.&lt;default&gt; (2)" />
-        <item itemvalue="TestNG.MSDATHOSCDashboard" />
-        <item itemvalue="TestNG.&lt;default&gt; (1)" />
+        <item itemvalue="TestNG.UserLogin.Login" />
+        <item itemvalue="TestNG.UserLogin" />
       </list>
     </recent_temporary>
   </component>
@@ -137,7 +170,18 @@
       <workItem from="1749335162334" duration="40391000" />
       <workItem from="1749515764194" duration="6576000" />
       <workItem from="1749692473782" duration="779000" />
-      <workItem from="1749694477083" duration="2154000" />
+      <workItem from="1749694477083" duration="3850000" />
+      <workItem from="1749705530915" duration="297000" />
+      <workItem from="1750031425552" duration="3519000" />
+      <workItem from="1750122193702" duration="28203000" />
+      <workItem from="1750382975259" duration="6181000" />
+      <workItem from="1750470285796" duration="10325000" />
+      <workItem from="1750728625099" duration="8727000" />
+      <workItem from="1750896366571" duration="11648000" />
+      <workItem from="1751080739039" duration="14167000" />
+      <workItem from="1751159238642" duration="8180000" />
+      <workItem from="1751254217790" duration="18462000" />
+      <workItem from="1751509588250" duration="463000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>

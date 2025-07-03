@@ -23,6 +23,8 @@
         public ChromeOptions options;
 
 
+
+
         public WebDriver initializeWebDriver() throws IOException {
             fis = new  FileInputStream(System.getProperty("user.dir")+"/src/main/java/resources/configuration.properties");
             prop = new Properties();
@@ -34,7 +36,8 @@
                 options = new ChromeOptions();
 
                 //configure driver to run browser in incognito mode and attempt to disable geo-location verification
-                options.addArguments("--incognito", "--disable-geolocation" );
+                // Removed temporarily: "--incognito"
+                options.addArguments( "--incognito", "--disable-geolocation" , "--disable modal", "\"--no-sandbox\"", "--disable-dev-shm-usage", "--disable-notifications");
 
 
                 //configure driver to manage windows alerts notifications and geo-location verification requests
@@ -44,6 +47,11 @@
                 prefs.put("profile.default_content_setting_values.popup", 2);
                 prefs.put("profile.default_content_setting_values.modal", 2);
                 options.setExperimentalOption("prefs",prefs);
+
+                // OPTIONAL: Run headless in CI
+                if (System.getenv("CI") != null) {
+                    options.addArguments("--headless=new");
+                }
 
                 this.driver = new ChromeDriver(options);
 
@@ -55,7 +63,7 @@
 
             }
             else if (browserName.equalsIgnoreCase("Firefox")){
-                //code to initialize Internet Explorer driver
+                //code to initialize Firefox driver
 
             }
             return driver;

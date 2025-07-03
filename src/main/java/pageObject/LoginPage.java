@@ -11,7 +11,9 @@
             this.driver=driver;
         }
 
+
         private By skipButton = By.cssSelector("button.bg-white");
+
 
         public WebElement getSkipButton(){
             return driver.findElement(skipButton);

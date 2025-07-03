@@ -1,20 +1,15 @@
     import org.openqa.selenium.WebDriver;
-    import org.openqa.selenium.chrome.ChromeDriver;
-    import org.openqa.selenium.chrome.ChromeOptions;
     import org.testng.Assert;
     import org.testng.annotations.BeforeClass;
     import org.testng.annotations.Test;
-    import pageObject.MSDATHealthOutcomesServiceCoverageDashboard;
+    import pageObject.MSDATHealthOutcomesSC;
     import resources.Base;
 
     import java.io.IOException;
-    import java.time.Duration;
-    import java.util.HashMap;
-    import java.util.Map;
 
-    public class MSDATHOSCDashboard extends Base {
+    public class MSDATHealthOSC extends Base {
         public WebDriver driver;
-        public MSDATHealthOutcomesServiceCoverageDashboard msdatHealthOutcomesServiceCoverageDashboard;
+        public MSDATHealthOutcomesSC msdatHealthOutcomesSC;
 
         @BeforeClass
         public void initializeDriver() throws IOException, InterruptedException {
