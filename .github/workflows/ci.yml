@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 600
+    timeout-minutes: 60
 
     steps:
       # 1. Checkout code
@@ -39,7 +39,8 @@ jobs:
         run: mvn clean test
         env:
           BROWSER: chrome
-          HEADLESS: false
+          HEADLESS: true
+          CHROME_OPTS: "--no-sandbox --disable-dev-shm-usage --disable-gpu"
 
       # 5.5. Generate test summary
       - name: Generate Test Summary
