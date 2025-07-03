@@ -4,25 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Initial commit ...take all necessary files">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFacility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFinancing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pageObject/Modals.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/PageLoadUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFinance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ModalsHandling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="second commit ...health facility">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthOutcomesServiceCoverageDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthOutcomesSC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resources/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resources/configuration.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/configuration.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHOSCDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthOSC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UserLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +20,9 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -59,7 +44,8 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -181,7 +167,7 @@
       <workItem from="1751080739039" duration="14167000" />
       <workItem from="1751159238642" duration="8180000" />
       <workItem from="1751254217790" duration="18462000" />
-      <workItem from="1751509588250" duration="463000" />
+      <workItem from="1751509588250" duration="1627000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>
@@ -190,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1749688629692</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="second commit ...health facility">
+      <created>1751510230031</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1751510230031</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +203,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="take all necessary files" />
     <MESSAGE value="Initial commit ...take all necessary files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit ...take all necessary files" />
+    <MESSAGE value="second commit ...health facility" />
+    <option name="LAST_COMMIT_MESSAGE" value="second commit ...health facility" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
