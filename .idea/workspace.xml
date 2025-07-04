@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Third commit in trying to fix CI condition">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/verifyColumnChartExpand.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/reports/verifyColumnChartExpand.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/verifyIndicatorSelect.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/reports/verifyIndicatorSelect.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/resources/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Listeners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +176,7 @@
       <workItem from="1751159238642" duration="8180000" />
       <workItem from="1751254217790" duration="18462000" />
       <workItem from="1751509588250" duration="4848000" />
-      <workItem from="1751523495071" duration="6790000" />
+      <workItem from="1751523495071" duration="7713000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>
@@ -205,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1751511490263</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Third commit in trying to fix CI condition">
+      <created>1751604728804</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1751604728804</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -75,6 +75,7 @@
                     options.addArguments("--no-sandbox");
 
                     // Timeout configuration
+                    this.driver = new ChromeDriver(options);
                     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(35));
                     driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
                 }
