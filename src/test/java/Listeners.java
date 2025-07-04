@@ -41,7 +41,7 @@
                 }
 
             try {
-                test.addScreenCaptureFromPath(takeScreenshot(methodName,driver), result.getName());
+                test.addScreenCaptureFromPath(takerScreenshot(methodName,driver), result.getName());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

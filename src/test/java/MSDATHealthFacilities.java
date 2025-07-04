@@ -39,13 +39,13 @@
         @Test(priority = 0)
         public void messWithModal() throws InterruptedException {
             Thread.sleep(60000);
-            msdatHealthFacility.getWhatsNewPopupClose().click();
+            clickWithRetry(msdatHealthFacility.getWhatsNewPopupClose());
             System.out.println("here is the first");
             Thread.sleep(5000);
-            msdatHealthFacility.getTutorialSkipBtn().click();
+            clickWithRetry(msdatHealthFacility.getTutorialSkipBtn());
             System.out.println("here is the second");
             Thread.sleep(5000);
-            msdatHealthFacility.getSectionGuideClose().click();
+            clickWithRetry(msdatHealthFacility.getSectionGuideClose());
             System.out.println("here is the final");
         }
 
@@ -65,7 +65,7 @@
 
 
             String actualTitle = driver.getTitle();
-            Assert.assertEquals(actualTitle, "MSDAT Nigeria", "Page title mismatch");
+            Assert.assertEquals(actualTitle, "MSDAT Nigeria | Health Facility", "Page title mismatch");
             System.out.println("here is initial");
             Thread.sleep(10000);
         }
@@ -113,7 +113,7 @@
 
         @Test(priority = 3)
         public void verifyUserPrintChart(){
-            msdatHealthFacility.getSubTableMenu().click();
+            clickWithRetry(msdatHealthFacility.getSubTableMenu());
             System.out.println("I have it");
             WebElement printBtn = msdatHealthFacility.getPrintBtn();
             System.out.println("I'm on print btn");
@@ -268,6 +268,7 @@
 
         @Test(priority = 12)
         public void verifyHFacDatasetIndicatorCompare(){
+
             msdatHealthFacility.getHFacDatasetCompare().click();
             System.out.println("@ dataset compare");
         }

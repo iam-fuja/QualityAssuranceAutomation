@@ -4,15 +4,12 @@
     <listeners>
         <listener class-name="Listeners"></listener>
     </listeners>
-    <test name="MSDATDailyAutomation beta ">
+    <test  name="/Users/dec/IdeaProjects/MSDATDailyAutomation">
         <classes>
 
             <class name ="MSDATHealthFacilities"></class>
         </classes>
     </test>
 </suite>
-
-
-
 
 
