@@ -1,5 +1,8 @@
     package resources;
 
+
+
+    import io.github.bonigarcia.wdm.WebDriverManager;
     import org.apache.commons.io.FileUtils;
     import org.openqa.selenium.*;
     import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,8 +26,7 @@
         public Properties prop;
         public WebDriver driver;
         public ChromeOptions options;
-
-
+        public WebDriverManager webDriverManager;
 
 
         public WebDriver initializeWebDriver() throws IOException {
@@ -34,7 +36,8 @@
 
             String browserName = prop.getProperty("browser");
             if (browserName.equalsIgnoreCase("Chrome")){
-                System.setProperty("webdriver,chrome.driver",System.getProperty("user.dir")+"\\src\\main\\java\\resources\\chromedriver");
+                WebDriverManager.chromedriver().setup();
+               // System.setProperty("webdriver,chrome.driver",System.getProperty("user.dir")+"\\src\\main\\java\\resources\\chromedriver");
                 options = new ChromeOptions();
 
                 //configure driver to run browser in incognito mode and attempt to disable geo-location verification
@@ -94,8 +97,22 @@
                 //code to initialize Firefox driver
 
             }
+
+            //INTRODUCED to sanitize CI pipeline
+            // Right after driver initialization
+            driver.manage().deleteAllCookies();
+            ((JavascriptExecutor)driver).executeScript("window.focus();");
+
+            // Before each click
+            try {
+                driver.findElement(By.cssSelector("body")).click(); // Reset focus
+            } catch (Exception e) {}
+
+
             return driver;
         }
+
+
 
 
         public String takeScreenshot(String testcaseName, WebDriver driver) throws IOException {

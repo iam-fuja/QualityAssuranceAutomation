@@ -1,5 +1,6 @@
 
     import com.aventstack.extentreports.ExtentTest;
+    import io.github.bonigarcia.wdm.WebDriverManager;
     import org.openqa.selenium.*;
     import org.openqa.selenium.interactions.Actions;
     import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,22 +18,22 @@
     import java.time.Duration;
 
     public class MSDATHealthFacilities extends Base {
-        public WebDriver driver;
+       // public WebDriver driver;
         public MSDATHealthFacility msdatHealthFacility;
         private ExtentTest test;
+
 
         @BeforeClass
         public void initializeDriver() throws IOException {
             this.driver = initializeWebDriver();
             driver.manage().window().maximize();
-            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
             driver.get(prop.getProperty("url"));
 
             // Use utility methods
             PageLoadUtils.waitForFullLoad(driver);  // Wait for full load
             PageLoadUtils.handleModals(driver);     // Handle modals
             msdatHealthFacility = new MSDATHealthFacility(driver);
-
         }
 
 

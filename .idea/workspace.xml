@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Third commit in trying to fix CI condition">
+    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Fourth commit  - fixed driver invocation for CI environment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/resources/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +57,9 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   }
 }</component>
@@ -62,7 +68,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/QualityAssuranceAutomation/testng.xml">
+  <component name="RunManager" selected="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml">
     <configuration name="MSDATDailyAutomation [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -133,8 +139,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/QualityAssuranceAutomation/testng.xml" />
         <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml" />
+        <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/QualityAssuranceAutomation/testng.xml" />
         <item itemvalue="TestNG.MSDATHealthFacilities" />
         <item itemvalue="Maven.MSDATDailyAutomation [clean]" />
         <item itemvalue="TestNG.UserLogin.Login" />
@@ -176,7 +182,8 @@
       <workItem from="1751159238642" duration="8180000" />
       <workItem from="1751254217790" duration="18462000" />
       <workItem from="1751509588250" duration="4848000" />
-      <workItem from="1751523495071" duration="7713000" />
+      <workItem from="1751523495071" duration="13819000" />
+      <workItem from="1751675899332" duration="3056000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>
@@ -206,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1751604728804</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fourth commit  - fixed driver invocation for CI environment">
+      <created>1751606161471</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1751606161471</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +242,8 @@
     <MESSAGE value="Initial commit ...take all necessary files" />
     <MESSAGE value="second commit ...health facility" />
     <MESSAGE value="Third commit in trying to fix CI condition" />
-    <option name="LAST_COMMIT_MESSAGE" value="Third commit in trying to fix CI condition" />
+    <MESSAGE value="Fourth commit  - fixed driver invocation for CI environment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fourth commit  - fixed driver invocation for CI environment" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
