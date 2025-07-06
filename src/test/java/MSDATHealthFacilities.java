@@ -57,15 +57,6 @@
             msdatHealthFacility.getHealthFacility().click();
             driver.switchTo().window(driver.getWindowHandles().stream().filter(handle -> !handle.equals(driver.getWindowHandle())).findFirst().get());
             Thread.sleep(3000);
-            // Loop through all open windows
-//            for (String windowHandle : driver.getWindowHandles()) {
-//                if (!windowHandle.equals(msdatHealthFacility.getHealthFacility())) {
-//                    driver.switchTo().window(windowHandle);  // Switch to the new window
-//                    break;
-//                }
-//            }
-
-
             String actualTitle = driver.getTitle();
             Assert.assertEquals(actualTitle, "MSDAT Nigeria | Health Facility", "Page title mismatch");
             System.out.println("here is initial");
@@ -91,10 +82,6 @@
             WebElement option = msdatHealthFacility.getHFacilityIndicatorOption();
             System.out.println("D");
             option.click();
-            System.out.println("E");
-
-
-            //msdatHealthFacility.getHFacilityIndicatorSelector().click();
             System.out.println("This is achievable");
             Thread.sleep(5000);
             msdatHealthFacility.getHFacilityIndicatorOption().click();
@@ -109,12 +96,12 @@
 
             Assert.assertTrue(indicatorTable.isDisplayed(), "Table is displayed");
             Assert.assertTrue(indicatorTableHeader.contains("Proportion of Health Facilities with Basic Equipment and related indicators (with year of latest values) across Nigeria"));
-
         }
 
 
         @Test(priority = 3)
-        public void verifyUserPrintChart(){
+        public void verifyUserPrintChart() throws InterruptedException {
+            Thread.sleep(10000);
             msdatHealthFacility.getSubTableMenu().click();
             System.out.println("I have it");
             WebElement printBtn = msdatHealthFacility.getPrintBtn();
@@ -126,26 +113,14 @@
 
         @Test(priority = 4)
         public void verifyZonalMapExpandBtn() throws InterruptedException {
+            Thread.sleep(10000);
             msdatHealthFacility.expandZonalMap().click();
             System.out.println("zonal map");
-
-//            WebElement button = msdatHealthFacility.activateColChart();
-//            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
-//            button.click();
-//            Thread.sleep(3000);
-
-
-
             WebElement modalHeader = driver.findElement(By.id("__BVID__93___BV_modal_outer_"));
-        //    System.out.println(driver.getPageSource());
-
             System.out.println("did we get this done?");
             // Optionally print or validate text
             String headerText = modalHeader.getText();
-            //System.out.println("Modal header: " + headerText);
             Assert.assertTrue(headerText.contains("Distribution of Proportion of Health Facilities with Basic Equipment across Nigeria"));
-            // Optional ExtentReports log
-         //   test.pass("Modal appeared with header: " + headerText);
             System.out.println("essentially at the end");
             Actions actions = new Actions(driver);
             actions.sendKeys(Keys.ESCAPE).perform();
@@ -161,7 +136,6 @@
             button.click();
             Thread.sleep(3000);
             System.out.println("lever");
-
             WebElement btn = msdatHealthFacility.expandColChart();
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("window.scrollBy(0, -200);", btn); // Scrolls up by 200 pixels
@@ -211,7 +185,7 @@
 
         @Test(priority = 8)
         public void verifyZonalAnalysisPrintChart() throws InterruptedException {
-            Thread.sleep(5000);
+            Thread.sleep(10000);
             msdatHealthFacility.getZonalAnalysisChartMenu().click();
             System.out.println("Zonal Analysis sub menu");
             WebElement zonalPrintBtn = msdatHealthFacility.getZonalAnalysisPrintBtn();
@@ -226,21 +200,7 @@
         @Test(priority = 9)
         public void verifyZonalAnalysisChartDownload () throws InterruptedException {
             Thread.sleep(10000);
-
-            // Click elsewhere or send ESC to close the menu
-//            Actions actions = new Actions(driver);
-//            actions.sendKeys(Keys.ESCAPE).perform();
-//            Thread.sleep(500); // Give time for UI to update
-
-          //  msdatHealthFacility.getZonalAnalysisChartMenu().click();
-//            WebElement tableOptn = msdatHealthFacility.getSubTableMenu();
-//            JavascriptExecutor js = (JavascriptExecutor) driver;
-//            js.executeScript("window.scrollBy(0, -300);", tableOptn); // Scrolls up by 300 pixels
-            // js.executeScript("arguments[0].scrollIntoView(true);", btn);
-//            tableOptn.click();
-            Thread.sleep(3000);
             WebElement downLoadBtn = msdatHealthFacility.getZonalAnalysisDownloadChart();
-            // dwnLdBtn.click();
             System.out.println("zonal analysis chart download");
             Assert.assertTrue(downLoadBtn.isDisplayed());
             System.out.println("zonal analysis chart download btn");
@@ -252,7 +212,7 @@
         @Test(priority = 10)
         public void verifyHFacMultiSourceCompareViewIndDataYrs() throws InterruptedException {
             msdatHealthFacility.getHFacMultiSourceCompareTab().click();
-            System.out.println("Multi SOucre Compare");
+            System.out.println("Multi Soucre Compare");
             Assert.assertTrue(msdatHealthFacility.getMultiSourceCompareIndicatorChart1().isDisplayed());
             Assert.assertTrue(msdatHealthFacility.getMultiSourceCompareIndicatorChart2().isDisplayed());
             Assert.assertTrue(msdatHealthFacility.getMultiSourceCompareIndicatorChart3().isDisplayed());
@@ -262,21 +222,18 @@
 
         @Test(priority = 11)
         public void verifyHFacIndicatorCompare(){
-
             msdatHealthFacility.getHFacIndicatorCompareTab().click();
             System.out.println("a new dawn Indicator COmpare");
-
         }
 
         @Test(priority = 12)
         public void verifyHFacDatasetIndicatorCompare(){
-
             msdatHealthFacility.getHFacDatasetCompare().click();
             System.out.println("@ dataset compare");
         }
 
         @AfterClass
         public void tearDown() {
-//            if (driver != null) driver.quit();
+           if (driver != null) driver.quit();
         }
     }

@@ -1,7 +1,6 @@
     package resources;
 
 
-
     import io.github.bonigarcia.wdm.WebDriverManager;
     import org.apache.commons.io.FileUtils;
     import org.openqa.selenium.*;
@@ -37,19 +36,26 @@
             try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("configuration.properties")) {
                 if (inputStream != null) {
                     prop.load(inputStream);
+                } else {
+                    throw new FileNotFoundException("configuration.properties not found in classpath.");
                 }
             }
 
+            // String browserName = prop.getProperty("browser");
 
-            String browserName = prop.getProperty("browser");
+            // Try to fetch from environment variable (e.g., CI), fallback to properties file
+            String browserName = System.getenv().getOrDefault("BROWSER", prop.getProperty("browser"));
+            boolean isHeadless = Boolean.parseBoolean(System.getenv().getOrDefault("HEADLESS", "false"));
+            boolean isCI = "true".equalsIgnoreCase(System.getenv("CI"));
+
             if (browserName.equalsIgnoreCase("Chrome")){
                  WebDriverManager.chromedriver().setup();
                // System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\src\\main\\java\\resources\\chromedriver");
                 options = new ChromeOptions();
 
+
                 //configure driver to run browser in incognito mode and attempt to disable geo-location verification
-                // Removed temporarily: "--incognito"
-                options.addArguments( "--incognito", "--disable-geolocation" , "--disable modal", "\"--no-sandbox\"", "--disable-dev-shm-usage", "--disable-notifications");
+                options.addArguments( "--incognito", "--disable-geolocation" , "--disable modal", "--no-sandbox", "--disable-dev-shm-usage", "--disable-notifications");
 
 
                 //configure driver to manage windows alerts notifications and geo-location verification requests
@@ -61,31 +67,20 @@
                 options.setExperimentalOption("prefs",prefs);
 
 
-                // In your Base class constructor/setup:
-               // ChromeOptions options = new ChromeOptions();
-
-                // Unified CI detection and configuration
-                boolean isCI = System.getenv("CI") != null || System.getProperty("CI") != null || System.getenv("CI") != null;
-
-                if (isCI) {
+                if (isCI || isHeadless) {
                     // Headless configuration
                     options.addArguments("--headless=new");
-                    options.addArguments("--window-size=1440,468");
+                    options.addArguments("--window-size=1920,1008");
                     options.addArguments("--disable-gpu");
                     options.addArguments("--no-sandbox");
                     options.addArguments("--disable-dev-shm-usage"); // Avoid /dev/shm issues
-
-                    // Timeout configuration
-                    this.driver = new ChromeDriver(options);
-                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(120));
-                    driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(240));
                 }
-                    ///******///////
 
                  this.driver = new ChromeDriver(options);
 
                 //configure driver to manage flow with implicit wait
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(120));
+                driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(240));
             }
             else if (browserName.equalsIgnoreCase("Internet Explorer")){
                 //code to initialize Internet Explorer driver
@@ -106,7 +101,6 @@
                 driver.findElement(By.cssSelector("body")).click(); // Reset focus
             } catch (Exception e) {}
 
-
             return driver;
         }
 
@@ -114,8 +108,11 @@
 
 
         public String takeScreenshot(String testcaseName, WebDriver driver) throws IOException {
+            // Ensure the directory exists
+            new File("target/reports").mkdirs();
             File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-            String dest = System.getProperty("user.dir")+"/reports/"+testcaseName+".jpg";
+       //     String dest = System.getProperty("user.dir")+"/reports/"+testcaseName+".jpg";
+            String dest = "target/reports/" + testcaseName + ".jpg";
             FileUtils.copyFile(src, new File(dest));
             return dest;
         }
@@ -146,16 +143,17 @@
         //FOR CI PURPOSES
         public String takerScreenshot(String testcaseName, WebDriver driver) throws IOException {
             // Create reports directory if it doesn't exist
-            new File(System.getProperty("user.dir")+"/reports/").mkdirs();
+          //  new File(System.getProperty("user.dir")+"/reports/").mkdirs();
+
+            // Ensure the directory exists
+            new File("target/reports").mkdirs();
 
             File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            String dest = System.getProperty("user.dir")+"/reports/"+testcaseName+"_"+timestamp+".png";
+         //   String dest = System.getProperty("user.dir")+"/reports/"+testcaseName+"_"+timestamp+".png";
+            String dest = "target/reports/" + testcaseName + ".jpg";
             FileUtils.copyFile(src, new File(dest));
             return dest;
         }
-
-
-
 
     }
