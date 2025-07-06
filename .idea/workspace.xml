@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Seventh commit  - test class 'driver' edits">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resources/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" afterDir="false" />
-    </list>
+    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Eight commit  - what could be wrong with my CI" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -185,7 +180,7 @@
       <workItem from="1751523495071" duration="13819000" />
       <workItem from="1751675899332" duration="3726000" />
       <workItem from="1751695107942" duration="410000" />
-      <workItem from="1751761425742" duration="8763000" />
+      <workItem from="1751761425742" duration="9186000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>
@@ -243,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1751770045690</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Eight commit  - what could be wrong with my CI">
+      <created>1751773202171</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1751773202171</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,7 +271,8 @@
     <MESSAGE value="Fifth commit  - WebDriverManager portability and consistency taken care of both on local and CI environments" />
     <MESSAGE value="Sixth commit  - configuration.properties portability and consistency taken care of both on local and CI environments" />
     <MESSAGE value="Seventh commit  - test class 'driver' edits" />
-    <option name="LAST_COMMIT_MESSAGE" value="Seventh commit  - test class 'driver' edits" />
+    <MESSAGE value="Eight commit  - what could be wrong with my CI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Eight commit  - what could be wrong with my CI" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

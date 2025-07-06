@@ -70,7 +70,7 @@
                 if (isCI) {
                     // Headless configuration
                     options.addArguments("--headless=new");
-                    options.addArguments("--window-size=1920,1080");
+                    options.addArguments("--window-size=1440,468");
                     options.addArguments("--disable-gpu");
                     options.addArguments("--no-sandbox");
 
