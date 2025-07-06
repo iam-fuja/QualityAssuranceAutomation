@@ -10,10 +10,7 @@
     import org.openqa.selenium.support.ui.ExpectedConditions;
     import org.openqa.selenium.support.ui.WebDriverWait;
 
-    import java.io.File;
-    import java.io.FileInputStream;
-    import java.io.FileNotFoundException;
-    import java.io.IOException;
+    import java.io.*;
     import java.text.SimpleDateFormat;
     import java.time.Duration;
     import java.util.Date;
@@ -30,9 +27,20 @@
 
 
         public WebDriver initializeWebDriver() throws IOException {
-            fis = new  FileInputStream(System.getProperty("user.dir")+"/src/main/java/resources/configuration.properties");
+            //local machine pathway
+//            fis = new  FileInputStream(System.getProperty("user.dir")+"/src/main/java/resources/configuration.properties");
+//            prop = new Properties();
+//            prop.load(fis);
+
+            //compatible for both local and CI env
             prop = new Properties();
-            prop.load(fis);
+            // Load defaults from classpath (inside JAR)
+            try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("configuration.properties")) {
+                if (inputStream != null) {
+                    prop.load(inputStream);
+                }
+            }
+
 
             String browserName = prop.getProperty("browser");
             if (browserName.equalsIgnoreCase("Chrome")){
