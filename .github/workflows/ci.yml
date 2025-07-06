@@ -40,7 +40,7 @@ jobs:
         env:
           BROWSER: chrome
           HEADLESS: true
-          CHROME_OPTS: "--no-sandbox --disable-dev-shm-usage --disable-gpu"
+          CHROME_OPTS: "--no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1920,1080"
 
       # 5.1 Print failed tests if any
       - name: Print Failed Tests (if any)
@@ -48,6 +48,14 @@ jobs:
         run: |
           echo "🔍 Failed Test Methods (if any):"
           grep -r "<<< FAILURE!" target/surefire-reports || true
+
+      # 5.2 Upload screenshots if available
+      - name: Upload Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-screenshots
+          path: target/reports/*.jpg
 
       # 5.5 Generate test summary (always runs)
       - name: Generate Test Summary
