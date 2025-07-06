@@ -73,11 +73,12 @@
                     options.addArguments("--window-size=1440,468");
                     options.addArguments("--disable-gpu");
                     options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage"); // Avoid /dev/shm issues
 
                     // Timeout configuration
                     this.driver = new ChromeDriver(options);
-                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(35));
-                    driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(120));
+                    driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(240));
                 }
                     ///******///////
 

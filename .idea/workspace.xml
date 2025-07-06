@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Eight commit  - what could be wrong with my CI" />
+    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Ninth commit  - CI window-size=1440,468">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/PageLoadUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/PageLoadUtils.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -180,7 +184,7 @@
       <workItem from="1751523495071" duration="13819000" />
       <workItem from="1751675899332" duration="3726000" />
       <workItem from="1751695107942" duration="410000" />
-      <workItem from="1751761425742" duration="9186000" />
+      <workItem from="1751761425742" duration="10304000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>
@@ -245,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1751773202171</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Ninth commit  - CI window-size=1440,468">
+      <created>1751774044785</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1751774044785</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +283,8 @@
     <MESSAGE value="Sixth commit  - configuration.properties portability and consistency taken care of both on local and CI environments" />
     <MESSAGE value="Seventh commit  - test class 'driver' edits" />
     <MESSAGE value="Eight commit  - what could be wrong with my CI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Eight commit  - what could be wrong with my CI" />
+    <MESSAGE value="Ninth commit  - CI window-size=1440,468" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ninth commit  - CI window-size=1440,468" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
