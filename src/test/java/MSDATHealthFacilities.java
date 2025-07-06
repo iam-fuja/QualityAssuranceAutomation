@@ -18,7 +18,7 @@
     import java.time.Duration;
 
     public class MSDATHealthFacilities extends Base {
-       // public WebDriver driver;
+        public WebDriver driver;
         public MSDATHealthFacility msdatHealthFacility;
         private ExtentTest test;
 
@@ -114,7 +114,7 @@
 
         @Test(priority = 3)
         public void verifyUserPrintChart(){
-            clickWithRetry(msdatHealthFacility.getSubTableMenu());
+            msdatHealthFacility.getSubTableMenu().click();
             System.out.println("I have it");
             WebElement printBtn = msdatHealthFacility.getPrintBtn();
             System.out.println("I'm on print btn");

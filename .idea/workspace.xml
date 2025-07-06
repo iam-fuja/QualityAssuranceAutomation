@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Fifth commit  - WebDriverManager portability and consistency taken care of both on local and CI environments">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/configuration.properties" afterDir="false" />
+    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Sixth commit  - configuration.properties portability and consistency taken care of both on local and CI environments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resources/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +23,7 @@
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/QualityAssuranceAutomation" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -185,7 +184,7 @@
       <workItem from="1751523495071" duration="13819000" />
       <workItem from="1751675899332" duration="3726000" />
       <workItem from="1751695107942" duration="410000" />
-      <workItem from="1751761425742" duration="3947000" />
+      <workItem from="1751761425742" duration="5871000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>
@@ -229,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1751680626490</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Sixth commit  - configuration.properties portability and consistency taken care of both on local and CI environments">
+      <created>1751767877785</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1751767877785</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,7 +259,8 @@
     <MESSAGE value="Third commit in trying to fix CI condition" />
     <MESSAGE value="Fourth commit  - fixed driver invocation for CI environment" />
     <MESSAGE value="Fifth commit  - WebDriverManager portability and consistency taken care of both on local and CI environments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fifth commit  - WebDriverManager portability and consistency taken care of both on local and CI environments" />
+    <MESSAGE value="Sixth commit  - configuration.properties portability and consistency taken care of both on local and CI environments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sixth commit  - configuration.properties portability and consistency taken care of both on local and CI environments" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
