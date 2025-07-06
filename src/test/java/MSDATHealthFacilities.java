@@ -18,7 +18,8 @@
     import java.time.Duration;
 
     public class MSDATHealthFacilities extends Base {
-        public WebDriver driver;
+       public WebDriver driver;
+
         public MSDATHealthFacility msdatHealthFacility;
         private ExtentTest test;
 

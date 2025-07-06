@@ -23,7 +23,6 @@
         public Properties prop;
         public WebDriver driver;
         public ChromeOptions options;
-        public WebDriverManager webDriverManager;
 
 
         public WebDriver initializeWebDriver() throws IOException {
@@ -44,8 +43,8 @@
 
             String browserName = prop.getProperty("browser");
             if (browserName.equalsIgnoreCase("Chrome")){
-                WebDriverManager.chromedriver().setup();
-               // System.setProperty("webdriver,chrome.driver",System.getProperty("user.dir")+"\\src\\main\\java\\resources\\chromedriver");
+                 WebDriverManager.chromedriver().setup();
+               // System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\src\\main\\java\\resources\\chromedriver");
                 options = new ChromeOptions();
 
                 //configure driver to run browser in incognito mode and attempt to disable geo-location verification
@@ -61,16 +60,6 @@
                 prefs.put("profile.default_content_setting_values.modal", 2);
                 options.setExperimentalOption("prefs",prefs);
 
-                ///******///////
-
-                // OPTIONAL: Run headless in CI
-//                if (System.getenv("CI") != null) {
-//                    options.addArguments("--headless=new");
-//                    //explicit wait for CI runs
-//                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(240));
-//                }
-
-                ///******///////
 
                 // In your Base class constructor/setup:
                // ChromeOptions options = new ChromeOptions();
@@ -92,7 +81,7 @@
                 }
                     ///******///////
 
-                this.driver = new ChromeDriver(options);
+                 this.driver = new ChromeDriver(options);
 
                 //configure driver to manage flow with implicit wait
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
