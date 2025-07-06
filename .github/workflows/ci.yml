@@ -42,7 +42,14 @@ jobs:
           HEADLESS: true
           CHROME_OPTS: "--no-sandbox --disable-dev-shm-usage --disable-gpu"
 
-      # 5.5. Generate test summary
+      # 5.1 Print failed tests if any
+      - name: Print Failed Tests (if any)
+        if: failure()
+        run: |
+          echo "🔍 Failed Test Methods (if any):"
+          grep -r "<<< FAILURE!" target/surefire-reports || true
+
+      # 5.5 Generate test summary (always runs)
       - name: Generate Test Summary
         if: always()
         run: |
@@ -50,7 +57,7 @@ jobs:
           PASSED=$(grep -oP 'testsuite.*?passed="\K\d+' target/surefire-reports/testng-results.xml | awk '{s+=$1} END {print s}')
           FAILED=$(grep -oP 'testsuite.*?failed="\K\d+' target/surefire-reports/testng-results.xml | awk '{s+=$1} END {print s}')
           SKIPPED=$(grep -oP 'testsuite.*?skipped="\K\d+' target/surefire-reports/testng-results.xml | awk '{s+=$1} END {print s}')
-          
+
           echo "MSDAT Daily Test Summary" > reports/test-summary.txt
           echo "==========================" >> reports/test-summary.txt
           echo "✅ Passed : $PASSED" >> reports/test-summary.txt
@@ -66,14 +73,14 @@ jobs:
           cp -r target/extent-reports/* reports/
           zip -r test-reports.zip reports/
 
-      # 7. Upload reports as GitHub artifact (temporary storage)
+      # 7. Upload zipped reports as GitHub artifact
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: test-reports.zip
 
-      # 8. Send email with reports
+      # 8. Send report via email
       - name: Send Email
         if: always()
         uses: dawidd6/action-send-mail@v4
@@ -102,7 +109,7 @@ jobs:
           attachments: test-reports.zip
           secure: true
 
-      # 9. Upload to Google Drive
+      # 9. Upload reports to Google Drive
       - name: Upload to Google Drive
         if: always()
         uses: satackey/action-google-drive@v1.1.1
