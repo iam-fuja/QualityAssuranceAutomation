@@ -21,6 +21,7 @@
         public FileInputStream fis;
         public Properties prop;
         public WebDriver driver;
+        protected WebDriverWait wait;
         public ChromeOptions options;
 
 
@@ -74,9 +75,15 @@
                     options.addArguments("--disable-gpu");
                     options.addArguments("--no-sandbox");
                     options.addArguments("--disable-dev-shm-usage"); // Avoid /dev/shm issues
+                    options.addArguments("--disable-infobars");
+                    options.addArguments("--disable-blink-features=AutomationControlled");
+                    // Important for headless mode
+                    options.addArguments("--remote-allow-origins=*");
+                    options.setAcceptInsecureCerts(true);
                 }
 
                  this.driver = new ChromeDriver(options);
+                 wait = new WebDriverWait(driver, Duration.ofSeconds(240));
 
                 //configure driver to manage flow with implicit wait
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(120));
@@ -94,12 +101,17 @@
             //INTRODUCED to sanitize CI pipeline
             // Right after driver initialization
             driver.manage().deleteAllCookies();
-            ((JavascriptExecutor)driver).executeScript("window.focus();");
+            try {
+                ((JavascriptExecutor)driver).executeScript("window.focus();");
+            } catch (Exception e) {
+                System.out.println("Skipping focus adjustments in CI");
+            }
+
 
             // Before each click
             try {
                 driver.findElement(By.cssSelector("body")).click(); // Reset focus
-            } catch (Exception e) {}
+            } catch (Exception e) {System.out.println("Skipping focus adjustments in CI 2");}
 
             return driver;
         }

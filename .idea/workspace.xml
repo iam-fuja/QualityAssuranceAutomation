@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Tenth commit  - wait times doubled">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/configuration.properties" afterDir="false" />
+    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Eleventh commit  - base class adjustment to best practices">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/resources/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Base.java" afterDir="false" />
@@ -189,7 +188,10 @@
       <workItem from="1751695107942" duration="410000" />
       <workItem from="1751761425742" duration="10929000" />
       <workItem from="1751799249256" duration="5544000" />
-      <workItem from="1751805667528" duration="2147000" />
+      <workItem from="1751805667528" duration="11127000" />
+      <workItem from="1751859632169" duration="5566000" />
+      <workItem from="1751941948726" duration="1780000" />
+      <workItem from="1751943747112" duration="2991000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>
@@ -268,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1751777896107</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Eleventh commit  - base class adjustment to best practices">
+      <created>1751807887823</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1751807887823</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +306,8 @@
     <MESSAGE value="Eight commit  - what could be wrong with my CI" />
     <MESSAGE value="Ninth commit  - CI window-size=1440,468" />
     <MESSAGE value="Tenth commit  - wait times doubled" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tenth commit  - wait times doubled" />
+    <MESSAGE value="Eleventh commit  - base class adjustment to best practices" />
+    <option name="LAST_COMMIT_MESSAGE" value="Eleventh commit  - base class adjustment to best practices" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
