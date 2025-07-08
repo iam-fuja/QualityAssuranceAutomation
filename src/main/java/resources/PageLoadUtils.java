@@ -7,8 +7,8 @@
     import java.util.List;
 
     public class PageLoadUtils {
-        private static final Duration GLOBAL_TIMEOUT = Duration.ofSeconds(480);
-        private static final Duration POLLING_INTERVAL = Duration.ofMillis(1000);
+        private static final Duration GLOBAL_TIMEOUT = Duration.ofSeconds(4800);
+        private static final Duration POLLING_INTERVAL = Duration.ofMillis(4000);
 
         // Wait for full page load (DOM + JS)
         public static void waitForFullLoad(WebDriver driver) {

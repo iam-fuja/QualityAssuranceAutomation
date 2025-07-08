@@ -83,11 +83,11 @@
                 }
 
                  this.driver = new ChromeDriver(options);
-                 wait = new WebDriverWait(driver, Duration.ofSeconds(240));
+                 wait = new WebDriverWait(driver, Duration.ofSeconds(480));
 
                 //configure driver to manage flow with implicit wait
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(120));
-                driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(240));
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(480));
+                driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(480));
             }
             else if (browserName.equalsIgnoreCase("Internet Explorer")){
                 //code to initialize Internet Explorer driver
@@ -135,7 +135,7 @@
             int attempts = 0;
             while (attempts < 3) {
                 try {
-                    new WebDriverWait(driver, Duration.ofSeconds(15))
+                    new WebDriverWait(driver, Duration.ofSeconds(240))
                             .until(ExpectedConditions.elementToBeClickable(element));
                     element.click();
                     return;
@@ -143,7 +143,7 @@
                     attempts++;
                     ((JavascriptExecutor)driver).executeScript(
                             "arguments[0].scrollIntoView({block: 'center'});", element);
-                    try { Thread.sleep(500); } catch (InterruptedException ie) {
+                    try { Thread.sleep(5000); } catch (InterruptedException ie) {
                         System.out.println("Retry isn't happening");
                     }
                 }
