@@ -31,7 +31,13 @@ jobs:
       - name: Debug - List files
         run: ls -R
 
-      # 5. Run tests
+      # ✅ 5. Check if MSDAT app is reachable
+      - name: Check App Availability
+        run: |
+          echo "🔍 Checking if MSDAT app is reachable..."
+          curl -I --max-time 10 https://msdat.fmohconnect.gov.ng/ || echo "❌ App not reachable"
+
+      # 6. Run tests
       - name: Run Tests
         run: mvn clean test
         env:
@@ -39,14 +45,14 @@ jobs:
           HEADLESS: true
           CHROME_OPTS: "--no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1920,1080"
 
-      # 6. Print failed tests
+      # 7. Print failed tests
       - name: Print Failed Tests (if any)
         if: failure()
         run: |
           echo "🔍 Failed Test Methods:"
           grep -r "<<< FAILURE!" target/surefire-reports || echo "No failures found."
 
-      # 7. Upload screenshots (if available)
+      # 8. Upload screenshots (if available)
       - name: Upload Screenshots
         if: always()
         uses: actions/upload-artifact@v4
@@ -55,7 +61,7 @@ jobs:
           path: target/reports/*.jpg
         continue-on-error: true
 
-      # 8. Generate test summary and write to GitHub UI
+      # 9. Generate test summary
       - name: Generate Test Summary
         if: always()
         run: |
@@ -73,7 +79,7 @@ jobs:
 
           echo "::notice ::✅ Passed: $PASSED | ❌ Failed: $FAILED | ⚠️ Skipped: $SKIPPED"
 
-      # 9. Zip all reports
+      # 10. Zip reports
       - name: Zip Reports
         if: always()
         run: |
@@ -81,14 +87,14 @@ jobs:
           cp -r target/extent-reports/* reports/ || true
           zip -r test-reports.zip reports/
 
-      # 10. Upload zipped reports
+      # 11. Upload zipped reports
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: test-reports.zip
 
-      # 11. Send report via email
+      # 12. Send report via email
       - name: Send Email
         if: always()
         uses: dawidd6/action-send-mail@v4
@@ -114,10 +120,10 @@ jobs:
 
             Regards,  
             MSDAT Quality Assurance Engineer
-          attachments: test-reports.zip
+          #attachments: test-reports.zip
           secure: true
 
-      # 12. Upload to Google Drive
+      # 13. Upload to Google Drive
       - name: Upload to Google Drive
         if: always()
         uses: satackey/action-google-drive@v1.1.1
