@@ -42,7 +42,7 @@ jobs:
         run: mvn clean test
         env:
           BROWSER: chrome
-          HEADLESS: true
+          HEADLESS: false
           CHROME_OPTS: "--no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1920,1080"
 
       # 7. Print failed tests
