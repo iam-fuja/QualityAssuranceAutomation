@@ -30,6 +30,12 @@
 
         private By subTableMenu = By.xpath("(//*[name()='g'][@class='highcharts-exporting-group'])[2]");
 
+        private By chartTabMenu = By.xpath("(//*[name()='g'][@class='highcharts-exporting-group'])[1]");
+
+        public WebElement getCharTabMenu (){
+            return driver.findElement(chartTabMenu);
+        }
+
         private By printBtn = By.xpath("//div[starts-with(@id, 'highcharts-')]//li[@class='highcharts-menu-item'][normalize-space()='Print chart']\n");
 
         private By downloadPNG = By.xpath("//li[@class='highcharts-menu-item' and contains(text(), 'Download PNG')]");

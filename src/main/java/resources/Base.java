@@ -107,7 +107,6 @@
                 System.out.println("Skipping focus adjustments in CI");
             }
 
-
             // Before each click
             try {
                 driver.findElement(By.cssSelector("body")).click(); // Reset focus
@@ -115,8 +114,6 @@
 
             return driver;
         }
-
-
 
 
         public String takeScreenshot(String testcaseName, WebDriver driver) throws IOException {
@@ -128,7 +125,6 @@
             FileUtils.copyFile(src, new File(dest));
             return dest;
         }
-
 
         //FOR CI PURPOSES
         protected void clickWithRetry(WebElement element) {

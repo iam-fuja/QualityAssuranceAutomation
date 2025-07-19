@@ -1,19 +1,15 @@
 
     import com.aventstack.extentreports.ExtentTest;
-    import io.github.bonigarcia.wdm.WebDriverManager;
     import org.openqa.selenium.*;
     import org.openqa.selenium.interactions.Actions;
     import org.openqa.selenium.support.ui.ExpectedConditions;
-    import org.openqa.selenium.support.ui.Select;
     import org.openqa.selenium.support.ui.WebDriverWait;
     import org.testng.*;
     import org.testng.annotations.*;
     import pageObject.MSDATHealthFacility;
-    import pageObject.MSDATHealthOutcomesSC;
     import resources.Base;
     import resources.PageLoadUtils;
 
-    import javax.swing.*;
     import java.io.IOException;
     import java.time.Duration;
 
@@ -191,22 +187,24 @@
             String colHeaderText = colModalHeader.getText();
             Assert.assertTrue(colHeaderText.contains("Trend analysis of Proportion of Health Facilities with Basic Equipment across periods"));
             System.out.println(("on column chart progress"));
-//            Actions actions = new Actions(driver);
-            actions.sendKeys(Keys.ESCAPE).perform();
+//            actions = new Actions(driver);
+           actions.sendKeys(Keys.ESCAPE).perform();
+            System.out.println("hello world");
         }
 
 
         @Test(priority = 6)
         public void verifyUserDownloadChart() throws InterruptedException {
-            Actions actions = new Actions(driver);
-            actions.sendKeys(Keys.ESCAPE).perform();
-            Thread.sleep(40000);
-            WebElement tableOptn = msdatHealthFacility.getSubTableMenu();
-            new WebDriverWait(driver, Duration.ofSeconds(240));
+           Actions actions = new Actions(driver);
+           actions.sendKeys(Keys.ESCAPE).perform();
+            System.out.println("we are in ");
+            Thread.sleep(4000);
+            WebElement tableOptn = msdatHealthFacility.getCharTabMenu();
+            new WebDriverWait(driver, Duration.ofSeconds(40));
             wait.until(ExpectedConditions.elementToBeClickable(tableOptn));
             JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("window.scrollBy(0, -300);", tableOptn); // Scrolls up by 300 pixels
-       //     js.executeScript("arguments[0].scrollIntoView(true);", tableOptn);
+            //js.executeScript("window.scrollBy(0, -300);", tableOptn); // Scrolls up by 300 pixels
+           js.executeScript("arguments[0].scrollIntoView(true);", tableOptn);
             tableOptn.click();
           //  Thread.sleep(3000);
             WebElement dwnLdBtn = msdatHealthFacility.getDwnLoadBtn();
@@ -291,6 +289,7 @@
 
         @AfterClass
         public void tearDown() {
-           if (driver != null) driver.quit();
+
+            //if (driver != null) driver.quit();
         }
     }

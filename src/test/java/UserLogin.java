@@ -6,7 +6,7 @@
     import org.testng.annotations.BeforeClass;
     import org.testng.annotations.Test;
     import pageObject.LoginPage;
-    import pageObject.MSDATHealthOutcomesSC;
+    import pageObject.MSDATHealthOutcomeSC;
     import resources.Base;
 
     import java.io.IOException;
@@ -16,7 +16,7 @@
         public WebDriver driver;
         public LoginPage loginPage;
         public Actions action;
-        public MSDATHealthOutcomesSC msdatHealthOutcomesSC;
+        public MSDATHealthOutcomeSC msdatHealthOutcomeSC;
 
 
         @BeforeClass
@@ -27,7 +27,7 @@
             driver.manage().window().maximize();
 
             loginPage = new LoginPage(driver);
-            msdatHealthOutcomesSC = new MSDATHealthOutcomesSC(driver);
+            msdatHealthOutcomeSC = new MSDATHealthOutcomeSC(driver);
             action = new Actions(driver);
         }
 
@@ -84,10 +84,10 @@
 
 
 
-            msdatHealthOutcomesSC.chooseDashboard().click();
+            msdatHealthOutcomeSC.chooseDashboard().click();
            // loginPage.getLoginRegisterLink().click();
             System.out.println("Blessings");
-            msdatHealthOutcomesSC.hoscDashboardLink().click();
+            msdatHealthOutcomeSC.hoscDashboardLink().click();
             System.out.println("Hosana");
 
 //            loginPage.getUsername().sendKeys(username);

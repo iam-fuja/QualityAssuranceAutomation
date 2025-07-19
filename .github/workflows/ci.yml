@@ -3,11 +3,12 @@ name: MSDAT Daily Automated Test (10 AM)
 on:
   schedule:
     - cron: '0 5 * * *'  # Runs at 6:00 AM WAT (5:00 AM UTC)
-  workflow_dispatch:       # Allows manual triggering
+  workflow_dispatch:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+#    runs-on: ubuntu-latest
+    runs-on: windows-latest
     timeout-minutes: 60
 
     steps:
@@ -15,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. Set up Java
+      # 2. Set up Java (with built-in Maven cache)
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -23,18 +24,21 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      # 3. Cache Maven dependencies
-      - name: Cache Maven
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-
-      # 4. Setup Chrome
+      # 3. Setup Chrome
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
 
-      # 5. Run tests
+      # 4. (Optional) Debug: List repo files
+      - name: Debug - List files
+        run: ls -R
+
+      # ✅ 5. Check if MSDAT app is reachable
+      - name: Check App Availability
+        run: |
+          echo "🔍 Checking if MSDAT app is reachable..."
+          curl -I --max-time 10 https://msdat.fmohconnect.gov.ng/ || echo "❌ App not reachable"
+
+      # 6. Run tests
       - name: Run Tests
         run: mvn clean test
         env:
@@ -42,29 +46,30 @@ jobs:
           HEADLESS: true
           CHROME_OPTS: "--no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1920,1080"
 
-      # 5.1 Print failed tests if any
+      # 7. Print failed tests
       - name: Print Failed Tests (if any)
         if: failure()
         run: |
-          echo "🔍 Failed Test Methods (if any):"
-          grep -r "<<< FAILURE!" target/surefire-reports || true
+          echo "🔍 Failed Test Methods:"
+          grep -r "<<< FAILURE!" target/surefire-reports || echo "No failures found."
 
-      # 5.2 Upload screenshots if available
+      # 8. Upload screenshots (if available)
       - name: Upload Screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-screenshots
           path: target/reports/*.jpg
+        continue-on-error: true
 
-      # 5.5 Generate test summary (always runs)
+      # 9. Generate test summary
       - name: Generate Test Summary
         if: always()
         run: |
           mkdir -p reports
-          PASSED=$(grep -oP 'testsuite.*?passed="\K\d+' target/surefire-reports/testng-results.xml | awk '{s+=$1} END {print s}')
-          FAILED=$(grep -oP 'testsuite.*?failed="\K\d+' target/surefire-reports/testng-results.xml | awk '{s+=$1} END {print s}')
-          SKIPPED=$(grep -oP 'testsuite.*?skipped="\K\d+' target/surefire-reports/testng-results.xml | awk '{s+=$1} END {print s}')
+          PASSED=$(grep -oP 'testsuite.*?passed="\K\d+' target/surefire-reports/testng-results.xml | awk '{s+=$1} END {print s+0}')
+          FAILED=$(grep -oP 'testsuite.*?failed="\K\d+' target/surefire-reports/testng-results.xml | awk '{s+=$1} END {print s+0}')
+          SKIPPED=$(grep -oP 'testsuite.*?skipped="\K\d+' target/surefire-reports/testng-results.xml | awk '{s+=$1} END {print s+0}')
 
           echo "MSDAT Daily Test Summary" > reports/test-summary.txt
           echo "==========================" >> reports/test-summary.txt
@@ -73,22 +78,24 @@ jobs:
           echo "⚠️ Skipped: $SKIPPED" >> reports/test-summary.txt
           echo "⏱️  Time   : $(date)" >> reports/test-summary.txt
 
-      # 6. Zip reports (TestNG + ExtentReports + Summary)
+          echo "::notice ::✅ Passed: $PASSED | ❌ Failed: $FAILED | ⚠️ Skipped: $SKIPPED"
+
+      # 10. Zip reports
       - name: Zip Reports
         if: always()
         run: |
-          cp -r target/surefire-reports/* reports/
-          cp -r target/extent-reports/* reports/
+          cp -r target/surefire-reports/* reports/ || true
+          cp -r target/extent-reports/* reports/ || true
           zip -r test-reports.zip reports/
 
-      # 7. Upload zipped reports as GitHub artifact
+      # 11. Upload zipped reports
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: test-reports.zip
 
-      # 8. Send report via email
+      # 12. Send report via email
       - name: Send Email
         if: always()
         uses: dawidd6/action-send-mail@v4
@@ -110,14 +117,14 @@ jobs:
             🔗 **View Full Logs**: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
             🧪 **Test Summary**:
-            (See full details in the attached test-summary.txt file)
+            (See attached summary file for details.)
 
             Regards,  
             MSDAT Quality Assurance Engineer
-          attachments: test-reports.zip
+          #attachments: test-reports.zip
           secure: true
 
-      # 9. Upload reports to Google Drive
+      # 13. Upload to Google Drive
       - name: Upload to Google Drive
         if: always()
         uses: satackey/action-google-drive@v1.1.1
@@ -125,3 +132,138 @@ jobs:
           file: test-reports.zip
           folder-id: ${{ secrets.GDRIVE_FOLDER_ID }}
           credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
+
+
+
+
+
+
+
+#name: MSDAT Daily Automated Test (10 AM)
+#
+#on:
+#  schedule:
+#    - cron: '0 5 * * *'  # Runs at 6:00 AM WAT (5:00 AM UTC)
+#  workflow_dispatch:       # Allows manual triggering
+#
+#jobs:
+#  test:
+#    #runs-on: ubuntu-latest
+#    runs-on: windows-latest
+#    timeout-minutes: 60
+#
+#    steps:
+#      # 1. Checkout code
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#
+#      # 2. Set up Java
+#      - name: Set up JDK 17
+#        uses: actions/setup-java@v4
+#        with:
+#          java-version: '17'
+#          distribution: 'temurin'
+#          cache: 'maven'
+#
+#      # 3. Cache Maven dependencies
+#      - name: Cache Maven
+#        uses: actions/cache@v4
+#        with:
+#          path: ~/.m2
+#          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+#
+#      # 4. Setup Chrome
+#      - name: Setup Chrome
+#        uses: browser-actions/setup-chrome@v1
+#
+#      # 5. Run tests
+#      - name: Run Tests
+#        run: mvn clean test
+#        env:
+#          BROWSER: chrome
+#          HEADLESS: true
+#          CHROME_OPTS: "--no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1920,1080"
+#
+#      # 5.1 Print failed tests if any
+#      - name: Print Failed Tests (if any)
+#        if: failure()
+#        run: |
+#          echo "🔍 Failed Test Methods (if any):"
+#          grep -r "<<< FAILURE!" target/surefire-reports || true
+#
+#      # 5.2 Upload screenshots if available
+#      - name: Upload Screenshots
+#        if: always()
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: test-screenshots
+#          path: target/reports/*.jpg
+#
+#      # 5.5 Generate test summary (always runs)
+#      - name: Generate Test Summary
+#        if: always()
+#        run: |
+#          mkdir -p reports
+#          PASSED=$(grep -oP 'testsuite.*?passed="\K\d+' target/surefire-reports/testng-results.xml | awk '{s+=$1} END {print s}')
+#          FAILED=$(grep -oP 'testsuite.*?failed="\K\d+' target/surefire-reports/testng-results.xml | awk '{s+=$1} END {print s}')
+#          SKIPPED=$(grep -oP 'testsuite.*?skipped="\K\d+' target/surefire-reports/testng-results.xml | awk '{s+=$1} END {print s}')
+#
+#          echo "MSDAT Daily Test Summary" > reports/test-summary.txt
+#          echo "==========================" >> reports/test-summary.txt
+#          echo "✅ Passed : $PASSED" >> reports/test-summary.txt
+#          echo "❌ Failed : $FAILED" >> reports/test-summary.txt
+#          echo "⚠️ Skipped: $SKIPPED" >> reports/test-summary.txt
+#          echo "⏱️  Time   : $(date)" >> reports/test-summary.txt
+#
+#      # 6. Zip reports (TestNG + ExtentReports + Summary)
+#      - name: Zip Reports
+#        if: always()
+#        run: |
+#          cp -r target/surefire-reports/* reports/
+#          cp -r target/extent-reports/* reports/
+#          zip -r test-reports.zip reports/
+#
+#      # 7. Upload zipped reports as GitHub artifact
+#      - name: Upload Artifact
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: test-reports
+#          path: test-reports.zip
+#
+#      # 8. Send report via email
+#      - name: Send Email
+#        if: always()
+#        uses: dawidd6/action-send-mail@v4
+#        with:
+#          server_address: smtp.gmail.com
+#          server_port: 465
+#          username: ${{ secrets.EMAIL_USERNAME }}
+#          password: ${{ secrets.EMAIL_PASSWORD }}
+#          subject: "MSDAT Daily Test Report - ${{ github.workflow }}"
+#          to: Taiwooladosu1@gmail.com,oyenike.sola@gmail.com
+#          from: ${{ secrets.EMAIL_USERNAME }}
+#          body: |
+#            Hello Team,
+#
+#            The MSDAT Daily Automated Test has been completed.
+#
+#            ✅ **Status**: ${{ job.status }}
+#            📅 **Date**: ${{ github.run_started_at }}
+#            🔗 **View Full Logs**: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+#
+#            🧪 **Test Summary**:
+#            (See full details in the attached test-summary.txt file)
+#
+#            Regards,
+#            MSDAT Quality Assurance Engineer
+#          attachments: test-reports.zip
+#          secure: true
+#
+#      # 9. Upload reports to Google Drive
+#      - name: Upload to Google Drive
+#        if: always()
+#        uses: satackey/action-google-drive@v1.1.1
+#        with:
+#          file: test-reports.zip
+#          folder-id: ${{ secrets.GDRIVE_FOLDER_ID }}
+#          credentials: ${{ secrets.GDRIVE_CREDENTIALS }}

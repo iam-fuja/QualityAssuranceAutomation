@@ -4,13 +4,13 @@
     import org.openqa.selenium.WebDriver;
     import org.openqa.selenium.WebElement;
 
-    public class MSDATHealthFinancing {
+    public class MSDATHealthFinance {
 
         public WebDriver driver;
 
-        public MSDATHealthFinancing msdatHealthFinancing;
+        public MSDATHealthFinance msdatHealthFinance;
 
-        public MSDATHealthFinancing(WebDriver driver) {
+        public MSDATHealthFinance(WebDriver driver) {
             this.driver = driver;
         }
 

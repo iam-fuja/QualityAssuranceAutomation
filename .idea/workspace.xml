@@ -4,8 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Twelfth commit  - optimised code base">
+    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATDemographic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/MSDATDemographics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_07_2025,_03_56_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_07_2025__03_56__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QualityAssuranceAutomation/src/test/java/MSDATHealthFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/QualityAssuranceAutomation/src/test/java/MSDATHealthFinance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFacility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFacility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFinancing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFinance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthOutcomesSC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthOutcomeSC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/TestReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/TestReport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFinances.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthOSC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthOSC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UserLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +83,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml">
+  <component name="RunManager" selected="TestNG.MSDATHealthFacilities">
     <configuration name="MSDATDailyAutomation [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -137,9 +154,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.MSDATHealthFacilities" />
         <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml" />
         <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/QualityAssuranceAutomation/testng.xml" />
-        <item itemvalue="TestNG.MSDATHealthFacilities" />
         <item itemvalue="Maven.MSDATDailyAutomation [clean]" />
         <item itemvalue="TestNG.UserLogin.Login" />
       </list>
@@ -188,7 +205,11 @@
       <workItem from="1751805667528" duration="11127000" />
       <workItem from="1751859632169" duration="5566000" />
       <workItem from="1751941948726" duration="1780000" />
-      <workItem from="1751943747112" duration="3705000" />
+      <workItem from="1751943747112" duration="5953000" />
+      <workItem from="1752030618788" duration="3380000" />
+      <workItem from="1752100053499" duration="4853000" />
+      <workItem from="1752135299592" duration="5625000" />
+      <workItem from="1752765868445" duration="21560000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>
@@ -281,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1751948408530</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Thirteenth commit  - CI Timing increased">
+      <created>1751952576381</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1751952576381</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,7 +341,8 @@
     <MESSAGE value="Eleventh commit  - base class adjustment to best practices" />
     <MESSAGE value="Twelfth commit  - base class adjustment to best practices" />
     <MESSAGE value="Twelfth commit  - optimised code base" />
-    <option name="LAST_COMMIT_MESSAGE" value="Twelfth commit  - optimised code base" />
+    <MESSAGE value="Thirteenth commit  - CI Timing increased" />
+    <option name="LAST_COMMIT_MESSAGE" value="Thirteenth commit  - CI Timing increased" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

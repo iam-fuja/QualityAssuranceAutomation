@@ -2,14 +2,14 @@
     import org.testng.Assert;
     import org.testng.annotations.BeforeClass;
     import org.testng.annotations.Test;
-    import pageObject.MSDATHealthOutcomesSC;
+    import pageObject.MSDATHealthOutcomeSC;
     import resources.Base;
 
     import java.io.IOException;
 
     public class MSDATHealthOSC extends Base {
         public WebDriver driver;
-        public MSDATHealthOutcomesSC msdatHealthOutcomesSC;
+        public MSDATHealthOutcomeSC msdatHealthOutcomeSC;
 
         @BeforeClass
         public void initializeDriver() throws IOException, InterruptedException {

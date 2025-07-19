@@ -6,7 +6,6 @@
     </listeners>
     <test  name="/Users/dec/IdeaProjects/MSDATDailyAutomation">
         <classes>
-
             <class name ="MSDATHealthFacilities"></class>
         </classes>
     </test>
