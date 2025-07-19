@@ -45,7 +45,7 @@
             modals = new Modals(driver);
             modals.getWhatsNewCloseBtn().click();
             System.out.println("what happened here");
-         //  msdatHealthFinancing.getHFIndicatorDropdown().click();
+         //  msdatHealthFinance.getHFIndicatorDropdown().click();
 
             System.out.println("FInish");
 
