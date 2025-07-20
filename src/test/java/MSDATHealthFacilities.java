@@ -20,6 +20,14 @@
        public MSDATHealthFacility msdatHealthFacility;
        private ExtentTest test;
 
+        public MSDATHealthFacilities(WebDriver driver) {
+            super();
+            this.driver = driver;
+        }
+
+        public MSDATHealthFacilities(MSDATHealthFacility msdatHealthFacility) {
+            this.msdatHealthFacility = msdatHealthFacility;
+        }
 
         @BeforeClass
         public void initializeDriver() throws IOException {
