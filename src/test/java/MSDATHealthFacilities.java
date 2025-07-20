@@ -203,7 +203,7 @@
             new WebDriverWait(driver, Duration.ofSeconds(40));
             wait.until(ExpectedConditions.elementToBeClickable(tableOptn));
             JavascriptExecutor js = (JavascriptExecutor) driver;
-            //js.executeScript("window.scrollBy(0, -300);", tableOptn); // Scrolls up by 300 pixels
+            js.executeScript("window.scrollBy(0, -300);", tableOptn); // Scrolls up by 300 pixels
            js.executeScript("arguments[0].scrollIntoView(true);", tableOptn);
             tableOptn.click();
           //  Thread.sleep(3000);

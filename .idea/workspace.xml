@@ -4,24 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATDemographic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/MSDATDemographics.java" afterDir="false" />
+    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Fourteenth - couple optimization, CI.yml, demography dashboard, etc">
       <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_07_2025,_03_56_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_07_2025__03_56__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QualityAssuranceAutomation/src/test/java/MSDATHealthFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/QualityAssuranceAutomation/src/test/java/MSDATHealthFinance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFacility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFacility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFinancing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFinance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthOutcomesSC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthOutcomeSC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resources/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resources/TestReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/TestReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATDemographics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATDemographics.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFinances.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthOSC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthOSC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UserLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +71,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.MSDATHealthFacilities">
+  <component name="RunManager" selected="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml">
     <configuration name="MSDATDailyAutomation [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -109,10 +97,10 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <configuration name="MSDATHealthFacilities" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="MSDATDemographics" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="MSDATDailyAutomation" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MSDATHealthFacilities" />
+      <option name="MAIN_CLASS_NAME" value="MSDATDemographics" />
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
@@ -120,12 +108,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserLogin.Login" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="MSDATHealthFacilities" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="MSDATDailyAutomation" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UserLogin" />
-      <option name="METHOD_NAME" value="Login" />
-      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="MAIN_CLASS_NAME" value="MSDATHealthFacilities" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
       <method v="2">
@@ -154,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.MSDATHealthFacilities" />
         <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml" />
+        <item itemvalue="TestNG.MSDATDemographics" />
+        <item itemvalue="TestNG.MSDATHealthFacilities" />
         <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/QualityAssuranceAutomation/testng.xml" />
         <item itemvalue="Maven.MSDATDailyAutomation [clean]" />
-        <item itemvalue="TestNG.UserLogin.Login" />
       </list>
     </recent_temporary>
   </component>
@@ -209,7 +196,9 @@
       <workItem from="1752030618788" duration="3380000" />
       <workItem from="1752100053499" duration="4853000" />
       <workItem from="1752135299592" duration="5625000" />
-      <workItem from="1752765868445" duration="21560000" />
+      <workItem from="1752765868445" duration="24393000" />
+      <workItem from="1753016279684" duration="3207000" />
+      <workItem from="1753019600597" duration="481000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>
@@ -309,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1751952576381</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fourteenth - couple optimization, CI.yml, demography dashboard, etc">
+      <created>1752968438166</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1752968438166</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +338,8 @@
     <MESSAGE value="Twelfth commit  - base class adjustment to best practices" />
     <MESSAGE value="Twelfth commit  - optimised code base" />
     <MESSAGE value="Thirteenth commit  - CI Timing increased" />
-    <option name="LAST_COMMIT_MESSAGE" value="Thirteenth commit  - CI Timing increased" />
+    <MESSAGE value="Fourteenth - couple optimization, CI.yml, demography dashboard, etc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fourteenth - couple optimization, CI.yml, demography dashboard, etc" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
