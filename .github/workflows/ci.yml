@@ -125,13 +125,13 @@ jobs:
           secure: true
 
       # 13. Upload to Google Drive
-      - name: Upload to Google Drive
-        if: always()
-        uses: satackey/action-google-drive@v1.1.1
-        with:
-          file: test-reports.zip
-          folder-id: ${{ secrets.GDRIVE_FOLDER_ID }}
-          credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
+#      - name: Upload to Google Drive
+#        if: always()
+#        uses: satackey/action-google-drive@v1.1.1
+#        with:
+#          file: test-reports.zip
+#          folder-id: ${{ secrets.GDRIVE_FOLDER_ID }}
+#          credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
 
 
 
