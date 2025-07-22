@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="Fifteenth - Demographics Dashboard (removed Google drive upload)">
+    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="16th - leveraged &quot;messWithModal&quot; from MSDATHealthFacilities(MSDATFacility Dashboard)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATDemographic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATDemographic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFacility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFacility.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MSDATDemographics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATDemographics.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" afterDir="false" />
     </list>
@@ -68,37 +71,24 @@
       <recent name="$PROJECT_DIR$/src/main/java/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml">
-    <configuration name="MSDATDailyAutomation [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="clean" />
-              </list>
-            </option>
-            <option name="pomFileName" value="pom.xml" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="TestNG.MSDATDemographics">
     <configuration name="MSDATDemographics" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="MSDATDailyAutomation" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MSDATDemographics" />
       <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MSDATDemographics.verifyMSDATDemographicPage" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="MSDATDailyAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MSDATDemographics" />
+      <option name="METHOD_NAME" value="verifyMSDATDemographicPage" />
+      <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
       <method v="2">
@@ -138,11 +128,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml" />
         <item itemvalue="TestNG.MSDATDemographics" />
+        <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml" />
         <item itemvalue="TestNG.MSDATHealthFacilities" />
+        <item itemvalue="TestNG.MSDATDemographics.verifyMSDATDemographicPage" />
         <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/QualityAssuranceAutomation/testng.xml" />
-        <item itemvalue="Maven.MSDATDailyAutomation [clean]" />
       </list>
     </recent_temporary>
   </component>
@@ -195,7 +185,11 @@
       <workItem from="1752135299592" duration="5625000" />
       <workItem from="1752765868445" duration="24393000" />
       <workItem from="1753016279684" duration="3207000" />
-      <workItem from="1753019600597" duration="7820000" />
+      <workItem from="1753019600597" duration="21667000" />
+      <workItem from="1753050192851" duration="21000" />
+      <workItem from="1753050431011" duration="4910000" />
+      <workItem from="1753109942726" duration="10680000" />
+      <workItem from="1753121316791" duration="15694000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>
@@ -316,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1753020660409</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="16th - leveraged &quot;messWithModal&quot; from MSDATHealthFacilities(MSDATFacility Dashboard)">
+      <created>1753028569702</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1753028569702</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,7 +353,8 @@
     <MESSAGE value="Fourteenth - couple optimization, CI.yml, demography dashboard, etc" />
     <MESSAGE value="Fifteenth - Demographics Dashboard" />
     <MESSAGE value="Fifteenth - Demographics Dashboard (removed Google drive upload)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fifteenth - Demographics Dashboard (removed Google drive upload)" />
+    <MESSAGE value="16th - leveraged &quot;messWithModal&quot; from MSDATHealthFacilities(MSDATFacility Dashboard)" />
+    <option name="LAST_COMMIT_MESSAGE" value="16th - leveraged &quot;messWithModal&quot; from MSDATHealthFacilities(MSDATFacility Dashboard)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

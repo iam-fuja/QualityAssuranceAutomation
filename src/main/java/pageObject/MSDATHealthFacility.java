@@ -36,7 +36,7 @@
             return driver.findElement(chartTabMenu);
         }
 
-        private By printBtn = By.xpath("//div[starts-with(@id, 'highcharts-')]//li[@class='highcharts-menu-item'][normalize-space()='Print chart']\n");
+        private By printBtn = By.xpath("(//div[starts-with(@id, 'highcharts-')]//li[@class='highcharts-menu-item'][normalize-space()='Print chart'])[1]");
 
         private By downloadPNG = By.xpath("//li[@class='highcharts-menu-item' and contains(text(), 'Download PNG')]");
 

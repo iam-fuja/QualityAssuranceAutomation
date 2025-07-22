@@ -20,6 +20,9 @@
        public MSDATHealthFacility msdatHealthFacility;
        private ExtentTest test;
 
+        public MSDATHealthFacilities() {
+        }
+
         public MSDATHealthFacilities(WebDriver driver) {
             super();
             this.driver = driver;
@@ -63,7 +66,7 @@
         }
 
         @Test(priority = 1)
-        public void verifyHFacilityPage() throws InterruptedException {
+        public void verifyMSDATHFacilityPage() throws InterruptedException {
             new WebDriverWait(driver, Duration.ofSeconds(240))
                     .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getDashBoardSelectnDrpDwn()));
             msdatHealthFacility.getDashBoardSelectnDrpDwn().click();
@@ -88,7 +91,6 @@
                 }
             }
             ///////*******///////
-
 
 
             Thread.sleep(12000);
@@ -195,9 +197,10 @@
             String colHeaderText = colModalHeader.getText();
             Assert.assertTrue(colHeaderText.contains("Trend analysis of Proportion of Health Facilities with Basic Equipment across periods"));
             System.out.println(("on column chart progress"));
-//            actions = new Actions(driver);
-           actions.sendKeys(Keys.ESCAPE).perform();
+            actions.sendKeys(Keys.ESCAPE).perform() ;
             System.out.println("hello world");
+            clickWithRetry(driver.findElement(By.xpath("//button[@class='btn btn-danger work-sans'] ")));
+
         }
 
 
@@ -228,8 +231,8 @@
 
         @Test(priority = 7)
         public void verifyZonalAnalysisTab() throws InterruptedException {
-            Thread.sleep(40000);
-            new WebDriverWait(driver, Duration.ofSeconds(240));
+//            Thread.sleep(40000);
+//            new WebDriverWait(driver, Duration.ofSeconds(240));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.getZonalAnalysisTab()));
            msdatHealthFacility.getZonalAnalysisTab().click();
             System.out.println("we have it");
@@ -240,7 +243,7 @@
         @Test(priority = 8)
         public void verifyZonalAnalysisPrintChart() throws InterruptedException {
             Thread.sleep(40000);
-            new WebDriverWait(driver, Duration.ofSeconds(480));
+//            new WebDriverWait(driver, Duration.ofSeconds(480));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.getZonalAnalysisChartMenu()));
             msdatHealthFacility.getZonalAnalysisChartMenu().click();
             System.out.println("Zonal Analysis sub menu");
@@ -255,9 +258,9 @@
 
         @Test(priority = 9)
         public void verifyZonalAnalysisChartDownload () throws InterruptedException {
-            Thread.sleep(40000);
+            Thread.sleep(4000);
             WebElement downLoadBtn = msdatHealthFacility.getZonalAnalysisDownloadChart();
-            new WebDriverWait(driver, Duration.ofSeconds(240));
+//            new WebDriverWait(driver, Duration.ofSeconds(240));
             wait.until(ExpectedConditions.elementToBeClickable(downLoadBtn));
             System.out.println("zonal analysis chart download");
             Assert.assertTrue(downLoadBtn.isDisplayed());
