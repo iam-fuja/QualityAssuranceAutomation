@@ -116,7 +116,7 @@ jobs:
             target/reports/summary.txt
             target/reports/screenshots/*.jpg
             target/reports/report_bundle.zip
-        secure: true
+          secure: true
 
       # 11. Upload zipped bundle to Google Drive
       # - name: Upload to Google Drive
