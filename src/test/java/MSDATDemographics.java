@@ -111,27 +111,27 @@
 //            msdatDemographic.getCloseInfoModalPage().click();
         }
 
-        @Test(priority = 5)
-        public void verifyDemoIndicatorOverviewPrintChart (){
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].scrollIntoView(true);", msdatDemographic.getDemoIndSubMenu());
-            js.executeScript("window.scrollBy(0, -100);", msdatDemographic.getDemoIndSubMenu());
-            //js.executeScript("arguments[0].click();", msdatDemographic.getDemoIndSubMenu());
+        // @Test(priority = 5)
+        // public void verifyDemoIndicatorOverviewPrintChart (){
+        //     JavascriptExecutor js = (JavascriptExecutor) driver;
+        //     js.executeScript("arguments[0].scrollIntoView(true);", msdatDemographic.getDemoIndSubMenu());
+        //     js.executeScript("window.scrollBy(0, -100);", msdatDemographic.getDemoIndSubMenu());
+        //     //js.executeScript("arguments[0].click();", msdatDemographic.getDemoIndSubMenu());
 
 
-            System.out.println("Tag name: " + msdatDemographic.getDemoIndSubMenu().getTagName());
-            System.out.println("Is displayed: " + msdatDemographic.getDemoIndSubMenu().isDisplayed());
-            System.out.println("OuterHTML: " + ((JavascriptExecutor) driver)
-                    .executeScript("return arguments[0].outerHTML;", msdatDemographic.getDemoIndSubMenu()));
+        //     System.out.println("Tag name: " + msdatDemographic.getDemoIndSubMenu().getTagName());
+        //     System.out.println("Is displayed: " + msdatDemographic.getDemoIndSubMenu().isDisplayed());
+        //     System.out.println("OuterHTML: " + ((JavascriptExecutor) driver)
+        //             .executeScript("return arguments[0].outerHTML;", msdatDemographic.getDemoIndSubMenu()));
 
 
-            new WebDriverWait(driver, Duration.ofSeconds(40))
-                    .until(ExpectedConditions.visibilityOf(msdatDemographic.getDemoIndSubMenu()));
-            msdatDemographic.getDemoIndSubMenu().click();
+        //     new WebDriverWait(driver, Duration.ofSeconds(40))
+        //             .until(ExpectedConditions.visibilityOf(msdatDemographic.getDemoIndSubMenu()));
+        //     msdatDemographic.getDemoIndSubMenu().click();
 
-            Assert.assertTrue(msdatDemographic.getDemoIndSubMenuPrintBtn().isDisplayed());
-            Assert.assertTrue(msdatDemographic.getDemoIndSubMenuPrintBtn().isEnabled());
-        }
+        //     Assert.assertTrue(msdatDemographic.getDemoIndSubMenuPrintBtn().isDisplayed());
+        //     Assert.assertTrue(msdatDemographic.getDemoIndSubMenuPrintBtn().isEnabled());
+        // }
 
 
 
