@@ -54,15 +54,15 @@
             clickWithRetry(msdatHealthFacility.getWhatsNewPopupClose());
             System.out.println("here is the first");
 
-            new WebDriverWait(driver, Duration.ofSeconds(240))
-                    .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getTutorialSkipBtn()));
-            clickWithRetry(msdatHealthFacility.getTutorialSkipBtn());
-            System.out.println("here is the second");
+            // new WebDriverWait(driver, Duration.ofSeconds(240))
+            //         .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getTutorialSkipBtn()));
+            // clickWithRetry(msdatHealthFacility.getTutorialSkipBtn());
+            // System.out.println("here is the second");
 
-            new WebDriverWait(driver, Duration.ofSeconds(240))
-                    .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getSectionGuideClose()));
-            clickWithRetry(msdatHealthFacility.getSectionGuideClose());
-            System.out.println("here is the final");
+            // new WebDriverWait(driver, Duration.ofSeconds(240))
+            //         .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getSectionGuideClose()));
+            // clickWithRetry(msdatHealthFacility.getSectionGuideClose());
+            // System.out.println("here is the final");
         }
 
         @Test(priority = 1)
