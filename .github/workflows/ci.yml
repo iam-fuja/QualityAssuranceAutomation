@@ -91,7 +91,7 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: |
             MSDAT Daily Test Report - Status: ${{ steps.summary.outputs.status }}
-          to: Taiwooladosu1@gmail.com,oyenike.sola@gmail.com
+          to: oyenike.sola@gmail.com
           from: MSDAT QA Bot <${{ secrets.EMAIL_USERNAME }}>
           body: |
             Hello Team,
