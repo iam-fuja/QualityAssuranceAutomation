@@ -6,12 +6,12 @@
     import org.openqa.selenium.support.ui.ExpectedConditions;
     import org.openqa.selenium.support.ui.WebDriverWait;
     import org.testng.Assert;
-    import org.testng.annotations.BeforeClass;
-    import org.testng.annotations.BeforeTest;
-    import org.testng.annotations.Test;
+    import org.testng.ITestContext;
+    import org.testng.annotations.*;
     import pageObject.MSDATDemographic;
     import pageObject.MSDATHealthFacility;
     import resources.Base;
+    import resources.TestReport;
 
     import java.io.IOException;
     import java.time.Duration;
@@ -23,7 +23,7 @@
 
 
 
-        @BeforeTest
+        @BeforeClass
         public void initializeDriver() throws IOException {
             this.driver = initializeWebDriver();
             driver.manage().window().maximize();
@@ -35,10 +35,10 @@
 
 
        @Test(priority = 0)
-        public void handleModal() throws InterruptedException {
+        public void handleModalMSDATDemographics() throws InterruptedException {
             msdatHealthFacilities = new MSDATHealthFacilities(new MSDATHealthFacility(driver));
             msdatHealthFacilities.messWithModal();
-            System.out.println("modals handled successfully");
+            System.out.println("Demographics modals handled successfully");
         }
 
 
@@ -136,7 +136,12 @@
 
 
 
+        @AfterClass
+        public void tearDown(ITestContext context) {
 
+            //if (driver != null) driver.quit();
+            TestReport.exportReportSummary(context);
+        }
 
 
         }
