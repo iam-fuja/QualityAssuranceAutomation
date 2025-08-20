@@ -16,7 +16,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. Set up Java (with built-in Maven cache)
+      # 2. Free up disk space
+      - name: Free up disk space
+        run: |
+          echo "=== Before cleanup ==="
+          df -h
+          
+          # Remove unnecessary packages
+          sudo apt-get remove -y '^dotnet-.*'
+          sudo apt-get remove -y '^llvm-.*'
+          sudo apt-get remove -y 'php.*'
+          sudo apt-get autoremove -y
+          sudo apt-get clean
+          
+          # Remove large directories
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/share/swift
+          
+          # Clean docker
+          docker system prune -af --volumes
+          
+          echo "=== After cleanup ==="
+          df -h
+
+      # 3. Set up Java (with built-in Maven cache)
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -24,21 +49,21 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      # 3. Setup Chrome
+      # 4. Setup Chrome
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
 
-      # 4. (Optional) Debug: List repo files
+      # 5. (Optional) Debug: List repo files
       - name: Debug - List files
         run: ls -R
 
-      # ✅ 5. Check if MSDAT app is reachable
+      # ✅ 6. Check if MSDAT app is reachable
       - name: Check App Availability
         run: |
           echo "🔍 Checking if MSDAT app is reachable..."
           curl -I --max-time 10 https://msdat.fmohconnect.gov.ng/ || echo "❌ App not reachable"
 
-      # 6. Run tests
+      # 7. Run tests
       - name: Run Tests
         run: mvn clean test
         env:
@@ -46,14 +71,14 @@ jobs:
           HEADLESS: true
           CHROME_OPTS: "--no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1920,1080"
 
-      # 7. Print failed tests
+      # 8. Print failed tests
       - name: Print Failed Tests (if any)
         if: failure()
         run: |
           echo "🔍 Failed Test Methods:"
           grep -r "<<< FAILURE!" target/surefire-reports || echo "No failures found."
 
-      # 8. Upload screenshots (if available)
+      # 9. Upload screenshots (if available)
       - name: Upload Screenshots
         if: always()
         uses: actions/upload-artifact@v4
@@ -62,7 +87,7 @@ jobs:
           path: target/reports/*.jpg
         continue-on-error: true
 
-      # 9. Generate test summary
+      # 10. Generate test summary
       - name: Generate Test Summary
         if: always()
         run: |
@@ -80,7 +105,7 @@ jobs:
 
           echo "::notice ::✅ Passed: $PASSED | ❌ Failed: $FAILED | ⚠️ Skipped: $SKIPPED"
 
-      # 10. Zip reports
+      # 11. Zip reports
       - name: Zip Reports
         if: always()
         run: |
@@ -88,14 +113,14 @@ jobs:
           cp -r target/extent-reports/* reports/ || true
           zip -r test-reports.zip reports/
 
-      # 11. Upload zipped reports
+      # 12. Upload zipped reports
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: test-reports.zip
 
-      # 12. Send report via email
+      # 13. Send report via email
       - name: Send Email
         if: always()
         uses: dawidd6/action-send-mail@v4
@@ -124,7 +149,7 @@ jobs:
           #attachments: test-reports.zip
           secure: true
 
-      # 13. Upload to Google Drive
+      # 14. Upload to Google Drive
 #      - name: Upload to Google Drive
 #        if: always()
 #        uses: satackey/action-google-drive@v1.1.1
