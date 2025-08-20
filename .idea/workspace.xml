@@ -4,13 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="16th - leveraged &quot;messWithModal&quot; from MSDATHealthFacilities(MSDATFacility Dashboard)">
+    <list default="true" id="0455f85b-6d1c-4d43-ba9d-f480d464676d" name="Changes" comment="17th - MSDATDemographic page at work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATDemographic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATDemographic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthDemographic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthDemographic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFacility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFacility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATDemographics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATDemographics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObject/MSDATHealthFinance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/PageLoadUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/PageLoadUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/ReportDeliveryUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/ReportDeliveryUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Listeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthDemographics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthDemographics.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFacilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MSDATHealthFinances.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MSDATHealthFinances.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ModalsHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ModalsHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +60,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/dec/IdeaProjects/MSDATDailyAutomation/src/test/java&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/dec/IdeaProjects/MSDATDailyAutomation/src/test&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -71,24 +80,12 @@
       <recent name="$PROJECT_DIR$/src/main/java/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.MSDATDemographics">
-    <configuration name="MSDATDemographics" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml">
+    <configuration name="MSDATHealthDemographics" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="MSDATDailyAutomation" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MSDATDemographics" />
+      <option name="MAIN_CLASS_NAME" value="MSDATHealthDemographics" />
       <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MSDATDemographics.verifyMSDATDemographicPage" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="MSDATDailyAutomation" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MSDATDemographics" />
-      <option name="METHOD_NAME" value="verifyMSDATDemographicPage" />
-      <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
       <method v="2">
@@ -106,10 +103,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="/Users/dec/IdeaProjects/MSDATDailyAutomation/QualityAssuranceAutomation/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="MSDATHealthFinances" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="MSDATDailyAutomation" />
-      <option name="SUITE_NAME" value="$PROJECT_DIR$/QualityAssuranceAutomation/testng.xml" />
-      <option name="TEST_OBJECT" value="SUITE" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MSDATHealthFinances" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
       <method v="2">
@@ -126,13 +124,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="&lt;default&gt;" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="MSDATDailyAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="PACKAGE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.MSDATDemographics" />
         <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/testng.xml" />
         <item itemvalue="TestNG.MSDATHealthFacilities" />
-        <item itemvalue="TestNG.MSDATDemographics.verifyMSDATDemographicPage" />
-        <item itemvalue="TestNG./Users/dec/IdeaProjects/MSDATDailyAutomation/QualityAssuranceAutomation/testng.xml" />
+        <item itemvalue="TestNG.MSDATHealthFinances" />
+        <item itemvalue="TestNG.MSDATHealthDemographics" />
+        <item itemvalue="TestNG.&lt;default&gt;" />
       </list>
     </recent_temporary>
   </component>
@@ -189,7 +197,25 @@
       <workItem from="1753050192851" duration="21000" />
       <workItem from="1753050431011" duration="4910000" />
       <workItem from="1753109942726" duration="10680000" />
-      <workItem from="1753121316791" duration="15694000" />
+      <workItem from="1753121316791" duration="30594000" />
+      <workItem from="1753319476398" duration="6161000" />
+      <workItem from="1753406472301" duration="12727000" />
+      <workItem from="1753636498920" duration="13556000" />
+      <workItem from="1753733930997" duration="5383000" />
+      <workItem from="1753747911554" duration="12314000" />
+      <workItem from="1754103217391" duration="2256000" />
+      <workItem from="1754105507842" duration="1280000" />
+      <workItem from="1754158935704" duration="2033000" />
+      <workItem from="1754174614241" duration="44000" />
+      <workItem from="1754174951840" duration="2630000" />
+      <workItem from="1754177665911" duration="4246000" />
+      <workItem from="1754183157451" duration="627000" />
+      <workItem from="1754184199837" duration="1108000" />
+      <workItem from="1754231131467" duration="4975000" />
+      <workItem from="1754940902234" duration="2272000" />
+      <workItem from="1754952871895" duration="4515000" />
+      <workItem from="1755654813552" duration="1184000" />
+      <workItem from="1755657622192" duration="1899000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit ...take all necessary files">
       <created>1749688629692</created>
@@ -317,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1753028569702</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="17th - MSDATDemographic page at work">
+      <created>1753224539526</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1753224539526</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,7 +387,8 @@
     <MESSAGE value="Fifteenth - Demographics Dashboard" />
     <MESSAGE value="Fifteenth - Demographics Dashboard (removed Google drive upload)" />
     <MESSAGE value="16th - leveraged &quot;messWithModal&quot; from MSDATHealthFacilities(MSDATFacility Dashboard)" />
-    <option name="LAST_COMMIT_MESSAGE" value="16th - leveraged &quot;messWithModal&quot; from MSDATHealthFacilities(MSDATFacility Dashboard)" />
+    <MESSAGE value="17th - MSDATDemographic page at work" />
+    <option name="LAST_COMMIT_MESSAGE" value="17th - MSDATDemographic page at work" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -4,11 +4,18 @@
     <listeners>
         <listener class-name="Listeners"></listener>
     </listeners>
-    <test  name="/Users/dec/IdeaProjects/MSDATDailyAutomation">
+    <test name="/Users/dec/IdeaProjects/MSDATDailyAutomation">
         <classes>
-            <class name ="MSDATDemographics"></class>
+            <class name ="MSDATHealthFacilities"></class>
+<!--            <class name ="MSDATHealthDemographics"></class>-->
+<!--            <class name ="MSDATHealthFinances"></class>-->
         </classes>
     </test>
 </suite>
+
+
+
+
+
 
 

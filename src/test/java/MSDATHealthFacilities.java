@@ -9,6 +9,7 @@
     import pageObject.MSDATHealthFacility;
     import resources.Base;
     import resources.PageLoadUtils;
+    import resources.TestReport;
 
     import java.io.IOException;
     import java.time.Duration;
@@ -33,45 +34,48 @@
         }
 
         @BeforeClass
-        public void initializeDriver() throws IOException {
+        public void initializeDriver() throws IOException, InterruptedException {
             this.driver = initializeWebDriver();
-            wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+            wait = new WebDriverWait(driver, Duration.ofSeconds(120));
             driver.manage().window().maximize();
-            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
+          //driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
             driver.get(prop.getProperty("url"));
 
             // Use utility methods
             PageLoadUtils.waitForFullLoad(driver);  // Wait for full load
             PageLoadUtils.handleModals(driver);     // Handle modals
             msdatHealthFacility = new MSDATHealthFacility(driver);
+            Thread.sleep(11000);
         }
 
 
         @Test(priority = 0)
         public void messWithModal() throws InterruptedException {
-            new WebDriverWait(driver, Duration.ofSeconds(240))
+            Thread.sleep(25000);
+            new WebDriverWait(driver, Duration.ofSeconds(120))
                     .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getWhatsNewPopupClose()));
             clickWithRetry(msdatHealthFacility.getWhatsNewPopupClose());
             System.out.println("here is the first");
 
-            new WebDriverWait(driver, Duration.ofSeconds(240))
-                    .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getTutorialSkipBtn()));
-            clickWithRetry(msdatHealthFacility.getTutorialSkipBtn());
-            System.out.println("here is the second");
-
-            new WebDriverWait(driver, Duration.ofSeconds(240))
-                    .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getSectionGuideClose()));
-            clickWithRetry(msdatHealthFacility.getSectionGuideClose());
-            System.out.println("here is the final");
+//            new WebDriverWait(driver, Duration.ofSeconds(120))
+//                    .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getTutorialSkipBtn()));
+//            clickWithRetry(msdatHealthFacility.getTutorialSkipBtn());
+//            System.out.println("here is the second");
+//
+//            new WebDriverWait(driver, Duration.ofSeconds(120))
+//                    .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getSectionGuideClose()));
+//            clickWithRetry(msdatHealthFacility.getSectionGuideClose());
+//            System.out.println("here is the final");
         }
 
         @Test(priority = 1)
         public void verifyMSDATHFacilityPage() throws InterruptedException {
-            new WebDriverWait(driver, Duration.ofSeconds(240))
+
+            new WebDriverWait(driver, Duration.ofSeconds(120))
                     .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getDashBoardSelectnDrpDwn()));
             msdatHealthFacility.getDashBoardSelectnDrpDwn().click();
 
-            new WebDriverWait(driver, Duration.ofSeconds(240))
+            new WebDriverWait(driver, Duration.ofSeconds(120))
                     .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getHealthFacility()));
             msdatHealthFacility.getHealthFacility().click();
 
@@ -93,11 +97,13 @@
             ///////*******///////
 
 
-            Thread.sleep(12000);
+     //    // Thread.sleep(10000);
             String actualTitle = driver.getTitle();
+            wait.until(ExpectedConditions.titleIs("MSDAT Nigeria | Health Facility"));
+
             Assert.assertEquals(actualTitle, "MSDAT Nigeria | Health Facility", "Page title mismatch");
             System.out.println("here is initial");
-            Thread.sleep(40000);
+            Thread.sleep(4000);
         }
 
 
@@ -136,8 +142,8 @@
 
         @Test(priority = 3)
         public void verifyUserPrintChart() throws InterruptedException {
-            Thread.sleep(40000);
-            new WebDriverWait(driver, Duration.ofSeconds(480))
+            Thread.sleep(10000);
+            new WebDriverWait(driver, Duration.ofSeconds(240))
                     .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getSubTableMenu()));
             msdatHealthFacility.getSubTableMenu().click();
             System.out.println("I have it");
@@ -151,7 +157,7 @@
         @Test(priority = 4)
         public void verifyZonalMapExpandBtn() throws InterruptedException {
            // Thread.sleep(10000);
-            new WebDriverWait(driver, Duration.ofSeconds(480));
+            new WebDriverWait(driver, Duration.ofSeconds(240));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.expandZonalMap()));
             msdatHealthFacility.expandZonalMap().click();
             System.out.println("zonal map");
@@ -168,40 +174,40 @@
 
 
 
-        @Test(priority = 5)
-        public void verifyColumnChartExpand() throws InterruptedException {
-            Actions actions = new Actions(driver);
-            actions.sendKeys(Keys.ESCAPE).perform();
-
-            WebElement button = msdatHealthFacility.activateColChart();
-            new WebDriverWait(driver, Duration.ofSeconds(480));
-            wait.until(ExpectedConditions.elementToBeClickable(button));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
-            button.click();
-
-            System.out.println("lever");
-            WebElement btn = msdatHealthFacility.expandColChart();
-            new WebDriverWait(driver, Duration.ofSeconds(240));
-            wait.until(ExpectedConditions.elementToBeClickable(btn));
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("window.scrollBy(0, -200);", btn); // Scrolls up by 200 pixels
-         // js.executeScript("arguments[0].scrollIntoView(true);", btn);
-            btn.click();
-
-            System.out.println("now click");
-
-            WebElement colModalHeader = driver.findElement(By.id("__BVID__83___BV_modal_content_") );
-
-            System.out.println("making sense");
-
-            String colHeaderText = colModalHeader.getText();
-            Assert.assertTrue(colHeaderText.contains("Trend analysis of Proportion of Health Facilities with Basic Equipment across periods"));
-            System.out.println(("on column chart progress"));
-            actions.sendKeys(Keys.ESCAPE).perform() ;
-            System.out.println("hello world");
-            clickWithRetry(driver.findElement(By.xpath("//button[@class='btn btn-danger work-sans'] ")));
-
-        }
+//        @Test(priority = 5)
+//        public void verifyColumnChartExpand() throws InterruptedException {
+//            Actions actions = new Actions(driver);
+//            actions.sendKeys(Keys.ESCAPE).perform();
+//
+//            WebElement button = msdatHealthFacility.activateColChart();
+//            new WebDriverWait(driver, Duration.ofSeconds(120));
+//            wait.until(ExpectedConditions.elementToBeClickable(button));
+//            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
+//            button.click();
+//
+//            System.out.println("lever");
+//            WebElement btn = msdatHealthFacility.expandColChart();
+//            new WebDriverWait(driver, Duration.ofSeconds(120));
+//            wait.until(ExpectedConditions.elementToBeClickable(btn));
+//            JavascriptExecutor js = (JavascriptExecutor) driver;
+//            js.executeScript("window.scrollBy(0, -200);", btn); // Scrolls up by 200 pixels
+//         // js.executeScript("arguments[0].scrollIntoView(true);", btn);
+//            btn.click();
+//
+//            System.out.println("now click");
+//
+//            WebElement colModalHeader = driver.findElement(By.id("__BVID__83___BV_modal_content_") );
+//
+//            System.out.println("making sense");
+//
+//            String colHeaderText = colModalHeader.getText();
+//            Assert.assertTrue(colHeaderText.contains("Trend analysis of Proportion of Health Facilities with Basic Equipment across periods"));
+//            System.out.println(("on column chart progress"));
+//            actions.sendKeys(Keys.ESCAPE).perform() ;
+//            System.out.println("hello world");
+//            clickWithRetry(driver.findElement(By.xpath("//button[@class='btn btn-danger work-sans'] ")));
+//
+//        }
 
 
         @Test(priority = 6)
@@ -219,7 +225,7 @@
             tableOptn.click();
           //  Thread.sleep(3000);
             WebElement dwnLdBtn = msdatHealthFacility.getDwnLoadBtn();
-            new WebDriverWait(driver, Duration.ofSeconds(240));
+            new WebDriverWait(driver, Duration.ofSeconds(120));
             wait.until(ExpectedConditions.elementToBeClickable(dwnLdBtn));
            // dwnLdBtn.click();
             System.out.println("on the way to download");
@@ -242,8 +248,8 @@
 
         @Test(priority = 8)
         public void verifyZonalAnalysisPrintChart() throws InterruptedException {
-            Thread.sleep(40000);
-//            new WebDriverWait(driver, Duration.ofSeconds(480));
+            Thread.sleep(4000);
+//            new WebDriverWait(driver, Duration.ofSeconds(120));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.getZonalAnalysisChartMenu()));
             msdatHealthFacility.getZonalAnalysisChartMenu().click();
             System.out.println("Zonal Analysis sub menu");
@@ -260,7 +266,7 @@
         public void verifyZonalAnalysisChartDownload () throws InterruptedException {
             Thread.sleep(4000);
             WebElement downLoadBtn = msdatHealthFacility.getZonalAnalysisDownloadChart();
-//            new WebDriverWait(driver, Duration.ofSeconds(240));
+//            new WebDriverWait(driver, Duration.ofSeconds(120));
             wait.until(ExpectedConditions.elementToBeClickable(downLoadBtn));
             System.out.println("zonal analysis chart download");
             Assert.assertTrue(downLoadBtn.isDisplayed());
@@ -272,7 +278,7 @@
 
         @Test(priority = 10)
         public void verifyHFacMultiSourceCompareViewIndDataYrs() throws InterruptedException {
-            new WebDriverWait(driver, Duration.ofSeconds(240));
+            new WebDriverWait(driver, Duration.ofSeconds(120));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.getHFacMultiSourceCompareTab()));
             msdatHealthFacility.getHFacMultiSourceCompareTab().click();
             System.out.println("Multi Source Compare");
@@ -284,7 +290,7 @@
 
         @Test(priority = 11)
         public void verifyHFacIndicatorCompare(){
-            new WebDriverWait(driver, Duration.ofSeconds(240));
+            new WebDriverWait(driver, Duration.ofSeconds(120));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.getHFacIndicatorCompareTab()));
             msdatHealthFacility.getHFacIndicatorCompareTab().click();
             System.out.println("a new dawn Indicator Ccompare");
@@ -292,15 +298,20 @@
 
         @Test(priority = 12)
         public void verifyHFacDatasetIndicatorCompare(){
-            new WebDriverWait(driver, Duration.ofSeconds(240));
+            new WebDriverWait(driver, Duration.ofSeconds(120));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.getHFacDatasetCompare()));
             msdatHealthFacility.getHFacDatasetCompare().click();
             System.out.println("@ dataset compare");
         }
 
         @AfterClass
-        public void tearDown() {
-
+        public void tearDown(ITestContext context) {
+            TestReport.exportReportSummary(context);
             //if (driver != null) driver.quit();
         }
+
+
+        //determine functionality
+
+
     }

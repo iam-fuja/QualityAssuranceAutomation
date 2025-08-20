@@ -4,10 +4,10 @@
     import org.openqa.selenium.WebDriver;
     import org.openqa.selenium.WebElement;
 
-    public class MSDATDemographic {
+    public class MSDATHealthDemographic {
         public WebDriver driver;
 
-        public MSDATDemographic(WebDriver driver) {
+        public MSDATHealthDemographic(WebDriver driver) {
             this.driver = driver;
         }
 
@@ -64,8 +64,8 @@
         private By infoIconBtn = By.cssSelector("td[class='align-middle table-info-icon'] div[class='d-flex justify-content-center'] svg path");
 
 
-        //private By infoCLoseBtn = By.cssSelector(".btn.btn-danger.work-sans");
-        private By infoCLoseBtn = By.cssSelector("//div[@class='modal-title']");
+        //private By infoCloseBtn = By.cssSelector(".btn.btn-danger.work-sans");
+        private By infoCloseBtn = By.cssSelector("//div[@class='modal-title']");
 
         public WebElement getDemographicInfoIcon (){
            return driver.findElement(infoIconBtn);

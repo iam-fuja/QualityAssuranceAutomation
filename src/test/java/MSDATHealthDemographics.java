@@ -8,7 +8,7 @@
     import org.testng.Assert;
     import org.testng.ITestContext;
     import org.testng.annotations.*;
-    import pageObject.MSDATDemographic;
+    import pageObject.MSDATHealthDemographic;
     import pageObject.MSDATHealthFacility;
     import resources.Base;
     import resources.TestReport;
@@ -16,26 +16,28 @@
     import java.io.IOException;
     import java.time.Duration;
 
-    public class MSDATDemographics extends Base {
+    public class MSDATHealthDemographics extends Base {
         public WebDriver driver;
-        public MSDATDemographic msdatDemographic;
+        public MSDATHealthDemographic msdatDemographic;
         public MSDATHealthFacilities msdatHealthFacilities;
 
 
 
         @BeforeClass
-        public void initializeDriver() throws IOException {
+        public void initializeDriver() throws IOException, InterruptedException {
             this.driver = initializeWebDriver();
             driver.manage().window().maximize();
             driver.get(prop.getProperty("url"));
             System.out.println("Initialize driver for demographic");
-           msdatDemographic = new MSDATDemographic(driver);
+           msdatDemographic = new MSDATHealthDemographic(driver);
+            Thread.sleep(11000);
         }
 
 
 
        @Test(priority = 0)
         public void handleModalMSDATDemographics() throws InterruptedException {
+           Thread.sleep(25000);
             msdatHealthFacilities = new MSDATHealthFacilities(new MSDATHealthFacility(driver));
             msdatHealthFacilities.messWithModal();
             System.out.println("Demographics modals handled successfully");
@@ -54,6 +56,8 @@
 //            new WebDriverWait(driver, Duration.ofSeconds(40))
 //                    .until(driver -> driver.getWindowHandles().size() > 1);
             driver.getWindowHandles();
+            new WebDriverWait(driver, Duration.ofSeconds(40))
+                    .until(driver -> driver.getWindowHandles().size() > 1);
             for (String windowHandle : driver.getWindowHandles()) {
                 if (!windowHandle.equals(originalWindow)) {
                     driver.switchTo().window(windowHandle);
@@ -62,6 +66,8 @@
             }
 //            Thread.sleep(5000);
            // String word = driver.findElement(By.xpath("//h2[@class='main-text.d-inline-block']")).getText();
+            Thread.sleep(10000
+            );
             String word = driver.findElement(By.cssSelector(".main-text.d-inline-block")).getText();
 
             System.out.println(word);

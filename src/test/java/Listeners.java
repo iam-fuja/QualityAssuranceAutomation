@@ -31,6 +31,9 @@
             test.fail(result.getThrowable());
             String methodName = result.getName();
             WebDriver driver = null;
+            String status = "";
+            String testClassName = "";
+
 
             try {
                 //This is used to retrieve the driver object associated with the test class
@@ -40,11 +43,7 @@
                 throw new RuntimeException(e);
                 }
 
-            try {
-                test.addScreenCaptureFromPath(takerScreenshot(methodName,driver), result.getName());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            test.addScreenCaptureFromPath(takerScreenshot(methodName,driver), result.getName());
 
         }
 
@@ -66,6 +65,9 @@
 
         public void onFinish(ITestContext context) {
             ITestListener.super.onFinish(context);
+            /////*************/////
+          //  TestReport.exportReportSummary(context);
+            /////*************/////
             extent.flush();
         }
     }

@@ -25,7 +25,7 @@
 
         //indicator overview tab objects
         private By hfacIndicatorOverview = By.cssSelector("div[plerdy-tracking-id='20665876001']");
-
+       // private By hfacIndicatorOverview = By.linkText("Indicator Overview");
         private By hfacIndicatorDropdownOption = By.cssSelector("li[id=Indicator_Overview-0]");
 
         private By subTableMenu = By.xpath("(//*[name()='g'][@class='highcharts-exporting-group'])[2]");
