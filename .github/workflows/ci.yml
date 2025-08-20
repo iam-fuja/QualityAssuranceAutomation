@@ -1,4 +1,4 @@
-name: MSDAT Daily Automated Test (10 AM)
+name: MSDAT Daily Automated Test (6 AM)
 
 on:
   schedule:
@@ -105,12 +105,12 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "MSDAT Daily Test Report - ${{ github.workflow }}"
-          to: Taiwooladosu1@gmail.com,oyenike.sola@gmail.com
+          to: oyenike.sola@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
           body: |
             Hello Team,
 
-            The MSDAT Daily Automated Test has been completed.
+            The MSDAT (Health Facilities Dashboard) Daily Automated Test has been completed.
 
             ✅ **Status**: ${{ job.status }}
             📅 **Date**: ${{ github.run_started_at }}
