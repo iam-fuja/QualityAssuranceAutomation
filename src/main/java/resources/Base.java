@@ -31,6 +31,70 @@
         public ChromeOptions options;
 
 
+        // ========== INSERTION POINT         // ========== INSERTION POINT 6: 6: JVM Shutdown Hook ==========
+        // ADD THIS STATIC BLOCK right here (after your class variables):
+        static {
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                System.out.println("JVM shutdown detected, cleaning up resources...");
+            }));
+        }
+
+
+        // ========== INSERTION POINT 1: Enhanced Chrome Options Method ==========
+        // ADD THIS NEW METHOD after your class variables:
+        private ChromeOptions getEnhancedChromeOptions() {
+            ChromeOptions options = new ChromeOptions();
+
+            // Your existing basic configurations
+            options.addArguments("--incognito", "--disable-geolocation", "--disable modal",
+                    "--no-sandbox", "--disable-dev-shm-usage", "--disable-notifications");
+
+            // Enhanced stability options for stale driver prevention
+            options.addArguments("--remote-debugging-port=9222");
+            options.addArguments("--disable-extensions");
+            options.addArguments("--disable-web-security");
+            options.addArguments("--disable-features=VizDisplayCompositor");
+            options.addArguments("--disable-blink-features=AutomationControlled");
+            options.addArguments("--disable-background-timer-throttling");
+            options.addArguments("--disable-backgrounding-occluded-windows");
+            options.addArguments("--disable-renderer-backgrounding");
+
+            // CI Environment detection and additional options
+            boolean isCI = isRunningInCI();
+            boolean isHeadless = Boolean.parseBoolean(System.getenv().getOrDefault("HEADLESS", "false"));
+
+            if (isCI || isHeadless) {
+                System.out.println("Running in CI/Headless mode with enhanced stability options");
+                options.addArguments("--headless=new");
+                options.addArguments("--window-size=1920,1080");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--remote-allow-origins=*");
+                options.addArguments("--disable-info bars");
+                options.setAcceptInsecureCerts(true);
+            }
+
+            // Your existing prefs configuration
+            Map<String, Object> prefs = new HashMap<>();
+            prefs.put("profile.default_content_setting_values.notifications", 2);
+            prefs.put("profile.default_content_setting_values.geolocation", 2);
+            prefs.put("profile.default_content_setting_values.popup", 2);
+            prefs.put("profile.default_content_setting_values.modal", 2);
+            options.setExperimentalOption("prefs", prefs);
+
+            return options;
+        }
+
+        // CI Detection Method
+        private boolean isRunningInCI() {
+            return System.getenv("CI") != null ||
+                    System.getenv("JENKINS_URL") != null ||
+                    System.getenv("GITHUB_ACTIONS") != null ||
+                    "true".equalsIgnoreCase(System.getenv("CI"));
+        }
+
+
+
+
         public WebDriver initializeWebDriver() throws IOException {
             //local machine pathway
 //            fis = new  FileInputStream(System.getProperty("user.dir")+"/src/main/java/resources/configuration.properties");
@@ -58,7 +122,7 @@
             if (browserName.equalsIgnoreCase("Chrome")){
                  WebDriverManager.chromedriver().setup();
                // System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\src\\main\\java\\resources\\chromedriver");
-                options = new ChromeOptions();
+          /*      options = new ChromeOptions();
 
 
                 //configure driver to run browser in incognito mode and attempt to disable geo-location verification
@@ -87,14 +151,21 @@
                     options.addArguments("--remote-allow-origins=*");
                     options.setAcceptInsecureCerts(true);
                 }
+*/
+
+
+
+                // REPLACE your existing options configuration with this line:
+                options = getEnhancedChromeOptions(); // USE THE NEW METHOD
+
 
                  this.driver = new ChromeDriver(options);
                  wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 
                 //configure driver to manage flow with implicit wait
-                //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
                 driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(480));
-               // driver.manage().timeouts().setScriptTimeout(Duration.ofSeconds(30));
+                driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
             }
             else if (browserName.equalsIgnoreCase("Internet Explorer")){
                 //code to initialize Internet Explorer driver
@@ -123,6 +194,58 @@
         }
 
 
+
+        // ========== INSERTION POINT 5: Driver Health Check Methods ==========
+        // ADD THESE NEW METHODS after your initializeWebDriver method:
+        protected boolean isDriverAlive() {
+            if (driver == null) {
+                return false;
+            }
+
+            try {
+                driver.getCurrentUrl();
+                return true;
+            } catch (Exception e) {
+                System.err.println("Driver health check failed: " + e.getMessage());
+                return false;
+            }
+        }
+
+        protected void ensureDriverIsAlive() {
+            if (!isDriverAlive()) {
+                System.out.println("Driver is stale, recreating...");
+                cleanupDriver();
+                try {
+                    initializeWebDriver();
+                } catch (IOException e) {
+                    throw new RuntimeException("Failed to recreate driver", e);
+                }
+            }
+        }
+
+        // ========== INSERTION POINT 4: Cleanup Method ==========
+        // ADD THIS NEW METHOD:
+        public void cleanupDriver() {
+            System.out.println("Cleaning up WebDriver...");
+
+            if (driver != null) {
+                try {
+                    driver.quit();
+                } catch (Exception e) {
+                    System.err.println("Error during driver cleanup: " + e.getMessage());
+                } finally {
+                    driver = null;
+                    wait = null;
+                }
+            }
+
+            System.out.println("WebDriver cleanup complete");
+        }
+
+
+
+
+
         public String takeScreenshot(String testcaseName, WebDriver driver) throws IOException {
             // Ensure the directory exists
             new File("target/reports").mkdirs();
@@ -136,6 +259,10 @@
 
         //FOR CI PURPOSES
         protected void clickWithRetry(WebElement element) {
+
+            // Add health check before retry
+            ensureDriverIsAlive();
+
             int attempts = 0;
             while (attempts < 3) {
                 try {

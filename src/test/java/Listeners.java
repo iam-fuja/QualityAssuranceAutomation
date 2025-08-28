@@ -6,8 +6,10 @@
     import org.testng.ITestListener;
     import org.testng.ITestResult;
     import resources.Base;
+    import resources.ReportDeliveryUtil;
     import resources.TestReport;
 
+    import java.io.File;
     import java.io.IOException;
 
     public class Listeners extends Base implements ITestListener {
@@ -65,9 +67,14 @@
 
         public void onFinish(ITestContext context) {
             ITestListener.super.onFinish(context);
-            /////*************/////
-          //  TestReport.exportReportSummary(context);
-            /////*************/////
-            extent.flush();
+            extent.flush();  // Finalize the ExtentReports first
+            // THEN generate and email reports
+            try {
+                TestReport.exportReportSummary(context);
+                ReportDeliveryUtil.emailTestReport(new File(TestReport.ZIP_FILE), context);
+            } catch (Exception e) {
+                System.err.println("Failed to generate/email report: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
     }

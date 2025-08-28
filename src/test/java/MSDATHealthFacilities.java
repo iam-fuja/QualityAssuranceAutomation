@@ -15,11 +15,11 @@
     import java.time.Duration;
 
     public class MSDATHealthFacilities extends Base {
-       public WebDriver driver;
-       public WebDriverWait wait;
+        public WebDriver driver;
+        public WebDriverWait wait;
 
-       public MSDATHealthFacility msdatHealthFacility;
-       private ExtentTest test;
+        public MSDATHealthFacility msdatHealthFacility;
+        private ExtentTest test;
 
         public MSDATHealthFacilities() {
         }
@@ -33,24 +33,71 @@
             this.msdatHealthFacility = msdatHealthFacility;
         }
 
+//        @BeforeClass
+//        public void initializeDriver() throws IOException, InterruptedException {
+//            this.driver = initializeWebDriver();
+//            wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+//            driver.manage().window().maximize();
+//          //driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
+//            driver.get(prop.getProperty("url"));
+//
+//            // Use utility methods
+//            PageLoadUtils.waitForFullLoad(driver);  // Wait for full load
+//            PageLoadUtils.handleModals(driver);     // Handle modals
+//            msdatHealthFacility = new MSDATHealthFacility(driver);
+//            Thread.sleep(11000);
+//        }
+
+
+        // ========== INSERTION POINT 3: Replace @BeforeClass with @BeforeMethod ==========
+        // REMOVE your existing @BeforeClass and REPLACE with this:
         @BeforeClass
-        public void initializeDriver() throws IOException, InterruptedException {
-            this.driver = initializeWebDriver();
+            public void setUp() throws IOException, InterruptedException {
+                System.out.println("Setting up test method...");
+
+                // Clean up any existing driver first
+                if (driver != null) {
+                    cleanupDriver(); // Use the new method from Base class
+                }
+
+                // Initialize new driver for each test method
+                this.driver = initializeWebDriver();
             wait = new WebDriverWait(driver, Duration.ofSeconds(120));
             driver.manage().window().maximize();
-          //driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
+
+            // Navigate to the application
             driver.get(prop.getProperty("url"));
 
             // Use utility methods
-            PageLoadUtils.waitForFullLoad(driver);  // Wait for full load
-            PageLoadUtils.handleModals(driver);     // Handle modals
+            PageLoadUtils.waitForFullLoad(driver);
+            PageLoadUtils.handleModals(driver);
             msdatHealthFacility = new MSDATHealthFacility(driver);
             Thread.sleep(11000);
+
+            System.out.println("Test method setup complete - Driver: " + (driver != null ? "Ready" : "Failed"));
         }
+
+
+        // ========== INSERTION POINT 4: Add @AfterMethod ==========
+        // ADD this new method:
+//        @AfterMethod
+//        public void cleanupAfterTest() {
+//            System.out.println("Cleaning up after test method...");
+//
+//            if (driver != null) {
+//                cleanupDriver();
+//            }
+//
+//            System.out.println("Test method cleanup complete");
+//        }
 
 
         @Test(priority = 0)
         public void messWithModal() throws InterruptedException {
+
+            // ADD HEALTH CHECK
+//            ensureDriverIsAlive();
+
             Thread.sleep(25000);
             new WebDriverWait(driver, Duration.ofSeconds(120))
                     .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getWhatsNewPopupClose()));
@@ -71,6 +118,9 @@
         @Test(priority = 1)
         public void verifyMSDATHFacilityPage() throws InterruptedException {
 
+            // ADD HEALTH CHECK
+//            ensureDriverIsAlive();
+
             new WebDriverWait(driver, Duration.ofSeconds(120))
                     .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getDashBoardSelectnDrpDwn()));
             msdatHealthFacility.getDashBoardSelectnDrpDwn().click();
@@ -82,6 +132,10 @@
 
             ///////*******///////
             //driver.switchTo().window(driver.getWindowHandles().stream().filter(handle -> !handle.equals(driver.getWindowHandle())).findFirst().get());
+
+
+            // Add health check before retry
+//            ensureDriverIsAlive();
 
 
             String originalWindow = driver.getWindowHandle();
@@ -96,8 +150,10 @@
             }
             ///////*******///////
 
+            // Add health check before retry
+//            ensureDriverIsAlive();
 
-     //    // Thread.sleep(10000);
+            //    // Thread.sleep(10000);
             String actualTitle = driver.getTitle();
             wait.until(ExpectedConditions.titleIs("MSDAT Nigeria | Health Facility"));
 
@@ -107,12 +163,17 @@
         }
 
 
-        public void verifyHealthFacilityDashboardNav(){
+        public void verifyHealthFacilityDashboardNav() {
 
         }
 
         @Test(priority = 2)
         public void verifyIndicatorSelect() throws InterruptedException {
+
+            // ADD HEALTH CHECK
+//            ensureDriverIsAlive();
+//            messWithModal();
+
             // Click input to open dropdown
             WebElement dropdownInput = msdatHealthFacility.getHFacilityIndicatorSelector();
             System.out.println("A");
@@ -134,7 +195,7 @@
             WebElement indicatorTable = driver.findElement(By.cssSelector("div[id='the-table'] div div[class='card-header d-flex justify-content-between border-bottom-0 align-items-center base_subCard']"));
             String indicatorTableHeader = indicatorTable.getText().toString();
             System.out.println(indicatorTableHeader);
-            WebElement table  = driver.findElement(By.cssSelector("div[class='w-100 d-flex justify-content-between align-items-center position-relative p-1'] b"));
+            WebElement table = driver.findElement(By.cssSelector("div[class='w-100 d-flex justify-content-between align-items-center position-relative p-1'] b"));
             Assert.assertTrue(indicatorTable.isDisplayed(), "Table is displayed");
             Assert.assertTrue(indicatorTableHeader.contains("Proportion of Health Facilities with Basic Equipment and related indicators (with year of latest values) across Nigeria"));
         }
@@ -142,6 +203,11 @@
 
         @Test(priority = 3)
         public void verifyUserPrintChart() throws InterruptedException {
+
+            // ADD HEALTH CHECK
+//            ensureDriverIsAlive();
+//            messWithModal();
+
             Thread.sleep(10000);
             new WebDriverWait(driver, Duration.ofSeconds(240))
                     .until(ExpectedConditions.visibilityOf(msdatHealthFacility.getSubTableMenu()));
@@ -156,7 +222,13 @@
 
         @Test(priority = 4)
         public void verifyZonalMapExpandBtn() throws InterruptedException {
-           // Thread.sleep(10000);
+
+            // ADD HEALTH CHECK
+//            ensureDriverIsAlive();
+//            messWithModal();
+
+
+            // Thread.sleep(10000);
             new WebDriverWait(driver, Duration.ofSeconds(240));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.expandZonalMap()));
             msdatHealthFacility.expandZonalMap().click();
@@ -170,8 +242,6 @@
             Actions actions = new Actions(driver);
             actions.sendKeys(Keys.ESCAPE).perform();
         }
-
-
 
 
 //        @Test(priority = 5)
@@ -212,8 +282,13 @@
 
         @Test(priority = 6)
         public void verifyUserDownloadChart() throws InterruptedException {
-           Actions actions = new Actions(driver);
-           actions.sendKeys(Keys.ESCAPE).perform();
+
+            // ADD HEALTH CHECK
+//            ensureDriverIsAlive();
+//            messWithModal();
+
+            Actions actions = new Actions(driver);
+            actions.sendKeys(Keys.ESCAPE).perform();
             System.out.println("we are in ");
             Thread.sleep(4000);
             WebElement tableOptn = msdatHealthFacility.getCharTabMenu();
@@ -221,13 +296,13 @@
             wait.until(ExpectedConditions.elementToBeClickable(tableOptn));
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("window.scrollBy(0, -300);", tableOptn); // Scrolls up by 300 pixels
-           js.executeScript("arguments[0].scrollIntoView(true);", tableOptn);
+            js.executeScript("arguments[0].scrollIntoView(true);", tableOptn);
             tableOptn.click();
-          //  Thread.sleep(3000);
+            //  Thread.sleep(3000);
             WebElement dwnLdBtn = msdatHealthFacility.getDwnLoadBtn();
             new WebDriverWait(driver, Duration.ofSeconds(120));
             wait.until(ExpectedConditions.elementToBeClickable(dwnLdBtn));
-           // dwnLdBtn.click();
+            // dwnLdBtn.click();
             System.out.println("on the way to download");
             Assert.assertTrue(dwnLdBtn.isDisplayed());
             System.out.println("I'm on chart download btn");
@@ -237,10 +312,16 @@
 
         @Test(priority = 7)
         public void verifyZonalAnalysisTab() throws InterruptedException {
+
+            // ADD HEALTH CHECK
+//            ensureDriverIsAlive();
+//            messWithModal();
+
+
 //            Thread.sleep(40000);
 //            new WebDriverWait(driver, Duration.ofSeconds(240));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.getZonalAnalysisTab()));
-           msdatHealthFacility.getZonalAnalysisTab().click();
+            msdatHealthFacility.getZonalAnalysisTab().click();
             System.out.println("we have it");
             Assert.assertTrue(msdatHealthFacility.getZonalAnalysisChart().isDisplayed());
             Assert.assertTrue(msdatHealthFacility.getZonalAnalysisMap().isDisplayed());
@@ -248,22 +329,32 @@
 
         @Test(priority = 8)
         public void verifyZonalAnalysisPrintChart() throws InterruptedException {
+
+            // ADD HEALTH CHECK
+//            ensureDriverIsAlive();
+//            messWithModal();
+
+
             Thread.sleep(4000);
 //            new WebDriverWait(driver, Duration.ofSeconds(120));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.getZonalAnalysisChartMenu()));
             msdatHealthFacility.getZonalAnalysisChartMenu().click();
             System.out.println("Zonal Analysis sub menu");
-            WebElement zonalPrintBtn = msdatHealthFacility.getZonalAnalysisPrintBtn();
+        WebElement zonalPrintBtn = msdatHealthFacility.getZonalAnalysisPrintBtn();
             System.out.println("Zonal Analysis Print");
             Assert.assertTrue(zonalPrintBtn.isDisplayed());
             Assert.assertTrue(zonalPrintBtn.isEnabled());
             System.out.println("done done");
-        }
-
+    }
 
 
         @Test(priority = 9)
-        public void verifyZonalAnalysisChartDownload () throws InterruptedException {
+        public void verifyZonalAnalysisChartDownload() throws InterruptedException {
+
+            // ADD HEALTH CHECK
+//            ensureDriverIsAlive();
+//            messWithModal();
+
             Thread.sleep(4000);
             WebElement downLoadBtn = msdatHealthFacility.getZonalAnalysisDownloadChart();
 //            new WebDriverWait(driver, Duration.ofSeconds(120));
@@ -278,6 +369,11 @@
 
         @Test(priority = 10)
         public void verifyHFacMultiSourceCompareViewIndDataYrs() throws InterruptedException {
+
+            // ADD HEALTH CHECK
+//            ensureDriverIsAlive();
+//            messWithModal();
+
             new WebDriverWait(driver, Duration.ofSeconds(120));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.getHFacMultiSourceCompareTab()));
             msdatHealthFacility.getHFacMultiSourceCompareTab().click();
@@ -289,7 +385,12 @@
 
 
         @Test(priority = 11)
-        public void verifyHFacIndicatorCompare(){
+        public void verifyHFacIndicatorCompare() throws InterruptedException {
+
+            // ADD HEALTH CHECK
+//            ensureDriverIsAlive();
+//            messWithModal();
+
             new WebDriverWait(driver, Duration.ofSeconds(120));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.getHFacIndicatorCompareTab()));
             msdatHealthFacility.getHFacIndicatorCompareTab().click();
@@ -297,12 +398,22 @@
         }
 
         @Test(priority = 12)
-        public void verifyHFacDatasetIndicatorCompare(){
+        public void verifyHFacDatasetIndicatorCompare() throws InterruptedException {
+
+            // ADD HEALTH CHECK
+//            ensureDriverIsAlive();
+//            messWithModal();
+
             new WebDriverWait(driver, Duration.ofSeconds(120));
             wait.until(ExpectedConditions.elementToBeClickable(msdatHealthFacility.getHFacDatasetCompare()));
             msdatHealthFacility.getHFacDatasetCompare().click();
             System.out.println("@ dataset compare");
         }
+
+    
+
+
+
 
         @AfterClass
         public void tearDown(ITestContext context) {
